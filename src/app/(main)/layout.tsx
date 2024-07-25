@@ -1,3 +1,10 @@
 import { type ReactNode } from 'react';
 
-export default ({ children }: { children: ReactNode }) => children;
+import { CssBaseline } from '@mui/material';
+
+export default ({ children }: { children: ReactNode }) => (
+	<>
+		<CssBaseline />
+		{children}
+	</>
+);
