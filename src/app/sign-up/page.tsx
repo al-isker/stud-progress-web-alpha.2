@@ -1,0 +1,3 @@
+import { SignUp } from '@/components/screens/SignUp';
+
+export default () => <SignUp />;
