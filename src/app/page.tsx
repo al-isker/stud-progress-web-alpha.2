@@ -1,3 +1,1 @@
-export default () => (
-    <main>main</main>
-);
+export default () => <main>main</main>;
