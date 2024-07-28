@@ -1,4 +1,5 @@
+import { pink } from '@mui/material/colors';
+
 export const COLORS = {
-	primary: '#e91e63',
-	secondary: null
+	primary: pink[500]
 };

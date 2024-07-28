@@ -3,15 +3,9 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { type FC, type SyntheticEvent } from 'react';
 
-import {
-	DonutLarge,
-	HomeRounded,
-	PersonRounded,
-	SchoolRounded
-} from '@mui/icons-material';
 import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
 
-import { ROUTES } from '@/lib/constants/routes';
+import { useTabs } from '@/lib/navigation/useTabs';
 
 export const Navigation: FC = () => {
 	const pathname = usePathname();
@@ -21,29 +15,17 @@ export const Navigation: FC = () => {
 		router.push(route);
 	};
 
+	const tabs = useTabs({
+		// isHomeNew: true,
+		// isSessionNew: false
+	});
+
 	return (
 		<Paper className='sticky bottom-0' elevation={4}>
 			<BottomNavigation value={pathname} onChange={handleClickAction}>
-				<BottomNavigationAction
-					label='Главная'
-					value={ROUTES.home}
-					icon={<HomeRounded />}
-				/>
-				<BottomNavigationAction
-					label='Сессия'
-					value={ROUTES.session}
-					icon={<SchoolRounded />}
-				/>
-				<BottomNavigationAction
-					label='Статистика'
-					value={ROUTES.dashboard}
-					icon={<DonutLarge />}
-				/>
-				<BottomNavigationAction
-					label='Профиль'
-					value={ROUTES.profile}
-					icon={<PersonRounded />}
-				/>
+				{tabs.map(dataTab => (
+					<BottomNavigationAction {...dataTab} />
+				))}
 			</BottomNavigation>
 		</Paper>
 	);
