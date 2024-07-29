@@ -1,5 +1,7 @@
 import { type FC } from 'react';
 
+import { Container } from '@/components/reused/Container';
+
 export const Home: FC = () => {
-	return <div>Home</div>;
+	return <Container>Home</Container>;
 };

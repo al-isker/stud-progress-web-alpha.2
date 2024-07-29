@@ -1,5 +1,7 @@
 import { type FC } from 'react';
 
+import { Container } from '@/components/reused/Container';
+
 export const Profile: FC = () => {
-	return <div>Profile</div>;
+	return <Container>Profile</Container>;
 };

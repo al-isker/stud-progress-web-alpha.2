@@ -1,5 +1,7 @@
 import { type FC } from 'react';
 
+import { Container } from '@/components/reused/Container';
+
 export const SignUp: FC = () => {
-	return <div>Sign Up</div>;
+	return <Container>Sign Up</Container>;
 };
