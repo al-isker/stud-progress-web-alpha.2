@@ -4,14 +4,14 @@ import { type FC, type ReactNode } from 'react';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import { COLORS } from '@/lib/styles/colors';
+import { BREAKPOINTS_MUI } from '@/lib/styles/breakpoints';
+import { COLORS_MUI } from '@/lib/styles/colors';
+import { TYPOGRAPHY_MUI } from '@/lib/styles/typography';
 
 const theme = createTheme({
-	palette: {
-		primary: {
-			main: COLORS.primary
-		}
-	}
+	breakpoints: BREAKPOINTS_MUI,
+	palette: COLORS_MUI,
+	typography: TYPOGRAPHY_MUI
 });
 
 export const MaterialProvider: FC<{ children: ReactNode }> = ({ children }) => (

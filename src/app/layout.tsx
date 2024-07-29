@@ -1,10 +1,10 @@
 import { type Metadata } from 'next';
-import { Roboto } from 'next/font/google';
+import { IBM_Plex_Sans } from 'next/font/google';
 import { type ReactNode } from 'react';
 
-const font = Roboto({
+const font = IBM_Plex_Sans({
 	subsets: ['latin'],
-	weight: ['100', '300', '400', '500', '700', '900']
+	weight: ['100', '200', '300', '400', '500', '600', '700']
 });
 
 export const metadata: Metadata = {
