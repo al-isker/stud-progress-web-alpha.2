@@ -1,12 +1,4 @@
-export type BreakpointsType = {
-	xs: number;
-	sm: number;
-	md: number;
-	lg: number;
-	xl: number;
-};
-
-const BREAKPOINTS: BreakpointsType = {
+const BREAKPOINTS = {
 	xs: 320,
 	sm: 480,
 	md: 768,
