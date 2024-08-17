@@ -2,18 +2,48 @@
 
 import { type FC, type ReactNode } from 'react';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {
+	Experimental_CssVarsProvider as CssVarsProvider,
+	experimental_extendTheme as extendTheme
+} from '@mui/material/styles';
 
-import { BREAKPOINTS_MUI } from '@/lib/styles/breakpoints';
-import { COLORS_MUI } from '@/lib/styles/colors';
-import { TYPOGRAPHY_MUI } from '@/lib/styles/typography';
+import { BREAKPOINTS, COLORS, FONT_FAMILY } from '@/lib/styles/style';
 
-const theme = createTheme({
-	breakpoints: BREAKPOINTS_MUI,
-	palette: COLORS_MUI,
-	typography: TYPOGRAPHY_MUI
+const theme = extendTheme({
+	cssVarPrefix: '',
+
+	breakpoints: {
+		values: {
+			xs: NaN,
+			sm: BREAKPOINTS.sm,
+			md: BREAKPOINTS.md,
+			lg: BREAKPOINTS.lg,
+			xl: NaN
+		}
+	},
+
+	typography: {
+		fontFamily: FONT_FAMILY.primary
+	},
+
+	colorSchemes: {
+		light: {
+			palette: {
+				primary: {
+					main: COLORS.light.primary
+				}
+			}
+		},
+		dark: {
+			palette: {
+				primary: {
+					main: COLORS.dark.primary
+				}
+			}
+		}
+	}
 });
 
 export const MaterialProvider: FC<{ children: ReactNode }> = ({ children }) => (
-	<ThemeProvider theme={theme}>{children}</ThemeProvider>
+	<CssVarsProvider theme={theme}>{children}</CssVarsProvider>
 );

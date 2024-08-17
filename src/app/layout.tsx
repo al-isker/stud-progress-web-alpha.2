@@ -4,7 +4,8 @@ import { type ReactNode } from 'react';
 
 const font = IBM_Plex_Sans({
 	subsets: ['latin'],
-	weight: ['100', '200', '300', '400', '500', '600', '700']
+	weight: ['100', '200', '300', '400', '500', '600', '700'],
+	variable: '--font-primary'
 });
 
 export const metadata: Metadata = {

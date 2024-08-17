@@ -23,7 +23,7 @@ export const AvatarUpload: FC<Props> = memo(({ avatar, onChange }) => (
 		</Upload>
 
 		<AvatarMUI
-			className='mx-auto w-48 h-48 shadow-md'
+			className='mx-auto w-48 h-48 shadow-3'
 			src={avatar}
 			alt='Аватар'
 		/>

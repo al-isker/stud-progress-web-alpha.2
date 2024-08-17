@@ -23,7 +23,7 @@ export const Navigation: FC = () => {
 	});
 
 	return (
-		<Paper className='sticky bottom-0' elevation={4}>
+		<Paper className='sticky bottom-0 bg-none' elevation={4}>
 			<Limiter>
 				<BottomNavigation value={pathname} onChange={handleClickAction}>
 					{tabs.map((dataTab, i) => (
