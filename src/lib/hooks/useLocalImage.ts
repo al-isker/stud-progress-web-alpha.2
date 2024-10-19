@@ -1,66 +1,67 @@
 import { useEffect, useState } from 'react';
 
-import { useNotification } from './useNotification';
+import { useShowHide } from './useShowHide';
 
 interface IReturn {
-	localImage: string | undefined;
-	setLocalImage: (image: File) => void;
+	image: string | undefined;
+	setImage: (image: File) => void;
+	removeImage: () => void;
 	error: {
 		message: string;
-		isOpen: boolean;
-		close: () => void;
-		open: () => void;
+		isShow: boolean;
+		show: () => void;
+		hide: () => void;
 	};
 }
 
-export const useLocaleImage = (path: string): IReturn => {
-	const [image, setImage] = useState<string>();
+export const useLocaleImage = (path: string, maxSize?: number): IReturn => {
+	const [stateImage, setStateImage] = useState<string>();
 
-	const notification = useNotification();
-	const message = 'Изображение слишком большого размера';
+	const message = useShowHide();
+	const messageText = 'Изображение слишком большого размера';
 
 	useEffect(() => {
 		const localImage = localStorage.getItem(path);
 
 		if (localImage) {
-			setImage(localImage);
+			setStateImage(localImage);
 		}
 	}, []);
 
-	useEffect(() => {
-		const localImage = localStorage.getItem(path);
-
-		if (image) {
-			if (image !== localImage) {
-				localStorage.setItem(path, image);
-			}
-		}
-	}, [image]);
-
-	const setLocalImage = (image: File) => {
+	const setImage = (fileImage: File) => {
 		const fr = new FileReader();
 
-		fr.readAsDataURL(image);
+		fr.readAsDataURL(fileImage);
 
 		fr.onload = () => {
 			const convertImage = fr.result as string;
+			const localImage = localStorage.getItem(path);
 
-			if (convertImage.length < 4900000) {
-				setImage(convertImage);
+			if (convertImage === localImage) return;
+
+			if (convertImage.length < (maxSize ?? 4900000)) {
+				localStorage.setItem(path, convertImage);
+
+				setStateImage(convertImage);
 			} else {
-				notification.open();
+				message.show();
 			}
 		};
 	};
 
+	const removeImage = () => {
+		localStorage.removeItem(path);
+
+		setStateImage(undefined);
+	};
+
 	return {
-		localImage: image,
-		setLocalImage,
+		image: stateImage,
+		setImage,
+		removeImage,
 		error: {
-			message,
-			isOpen: notification.isOpen,
-			open: notification.open,
-			close: notification.close
+			message: messageText,
+			...message
 		}
 	};
 };
