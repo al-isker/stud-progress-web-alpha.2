@@ -1,31 +1,42 @@
-import { FC, memo } from 'react';
+import { memo, useRef } from 'react';
 
-import { Edit } from '@mui/icons-material';
-import { Avatar as AvatarMUI, IconButton } from '@mui/material';
+import { Avatar as AvatarMUI } from '@mui/material';
 
-import { Upload } from '@/components/fields/Upload';
+import { Upload } from '@/components/fields/simple/Upload';
+
+import { AvatarActions } from './AvatarActions';
 
 interface Props {
 	avatar?: string;
-	onChange: (file: File) => void;
+	onUpload: (file: File) => void;
+	onDelete: () => void;
+	onInfo: () => void;
 }
 
-export const AvatarUpload: FC<Props> = memo(({ avatar, onChange }) => (
-	<div className='relative py-4'>
-		<Upload
-			className='absolute right-0 top-0'
-			accept='.png,.jpg'
-			onChange={onChange}
-		>
-			<IconButton>
-				<Edit fontSize='small' />
-			</IconButton>
-		</Upload>
+export const AvatarUpload = memo(function fn({
+	avatar,
+	onUpload,
+	onDelete,
+	onInfo
+}: Props) {
+	const uploadRef = useRef<HTMLInputElement>(null);
 
-		<AvatarMUI
-			className='mx-auto w-48 h-48 shadow-3'
-			src={avatar}
-			alt='Аватар'
-		/>
-	</div>
-));
+	return (
+		<>
+			<Upload ref={uploadRef} accept='.png,.jpg' onUpload={onUpload} />
+
+			<AvatarActions
+				className='absolute top-5 right-0'
+				onClickUpload={() => uploadRef.current?.click()}
+				onClickDelete={onDelete}
+				onClickInfo={onInfo}
+			/>
+
+			<AvatarMUI
+				className='shrink mx-auto min-w-48 min-h-48 shadow-mui-2'
+				src={avatar}
+				alt='Аватар студента'
+			/>
+		</>
+	);
+});

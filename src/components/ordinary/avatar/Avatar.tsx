@@ -2,36 +2,59 @@
 
 import { type FC, useCallback } from 'react';
 
-import { Snackbar } from '@mui/material';
+import { Lock } from '@mui/icons-material';
 
+import { Button } from '@/components/reused/button/Button';
+import { Dialog } from '@/components/reused/dialog/Dialog';
+import { Message } from '@/components/reused/message/Message';
+
+import { avatarMaxSize, avatarPath } from '@/lib/constants/localStorage';
 import { useLocaleImage } from '@/lib/hooks/useLocalImage';
+import { useShowHide } from '@/lib/hooks/useShowHide';
 
 import { AvatarUpload } from './AvatarUpload';
 
 export const Avatar: FC = () => {
 	const {
-		localImage: avatar,
-		setLocalImage: setAvatar,
+		image: avatar,
+		setImage: setAvatar,
+		removeImage: removeAvatar,
 		error
-	} = useLocaleImage('avatar');
+	} = useLocaleImage(avatarPath, avatarMaxSize);
 
-	const handleChangeUpload = useCallback((file: File) => {
-		setAvatar(file);
-	}, []);
+	const info = useShowHide();
+
+	const handleUpload = useCallback(setAvatar, []);
+	const handleDelete = useCallback(removeAvatar, []);
+	const handleInfo = useCallback(info.show, []);
 
 	return (
 		<>
-			<Snackbar
-				anchorOrigin={{
-					vertical: 'top',
-					horizontal: 'center'
-				}}
+			<Message
+				severity='error'
+				open={error.isShow}
+				onClose={error.hide}
 				autoHideDuration={3000}
-				message={error.message}
-				open={error.isOpen}
-				onClose={error.close}
+				noCloseButton
+			>
+				{error.message}
+			</Message>
+
+			<Dialog
+				icon={<Lock />}
+				title='Фото профиля'
+				text='Ваше фото профиля будете видеть только Вы'
+				open={info.isShow}
+				onClose={info.hide}
+				actions={<Button onClick={info.hide}>Закрыть</Button>}
 			/>
-			<AvatarUpload avatar={avatar} onChange={handleChangeUpload} />
+
+			<AvatarUpload
+				avatar={avatar}
+				onUpload={handleUpload}
+				onDelete={handleDelete}
+				onInfo={handleInfo}
+			/>
 		</>
 	);
 };
