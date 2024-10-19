@@ -1,25 +1,18 @@
-'use client';
-
 import { type FC } from 'react';
 
-import { AppBar, Slide, Toolbar, useScrollTrigger } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 
-import { Limiter } from '@/components/reused/Limiter';
+import { Limiter } from '@/components/reused/limiter/Limiter';
+import { Title } from '@/components/reused/title/Title';
 
 export const Header: FC = () => {
-	const isScrollDown = useScrollTrigger();
-
 	return (
-		<Slide in={!isScrollDown}>
-			<AppBar position='sticky'>
-				<Limiter>
-					<Toolbar>
-						<strong className='text-2xl font-bold tracking-wide text-nowrap'>
-							Stud Progress
-						</strong>
-					</Toolbar>
-				</Limiter>
-			</AppBar>
-		</Slide>
+		<AppBar position='sticky'>
+			<Limiter>
+				<Toolbar>
+					<Title />
+				</Toolbar>
+			</Limiter>
+		</AppBar>
 	);
 };
