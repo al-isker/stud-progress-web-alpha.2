@@ -5,9 +5,8 @@ import { type FC, type SyntheticEvent } from 'react';
 
 import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
 
-import { Limiter } from '@/components/reused/Limiter';
-
-import { useTabs } from '@/lib/navigation/useTabs';
+import { useTabs } from '@/components/other/useTabs';
+import { Limiter } from '@/components/reused/limiter/Limiter';
 
 export const Navigation: FC = () => {
 	const pathname = usePathname();
@@ -23,14 +22,27 @@ export const Navigation: FC = () => {
 	});
 
 	return (
-		<Paper className='sticky bottom-0 bg-none' elevation={4}>
-			<Limiter>
-				<BottomNavigation value={pathname} onChange={handleClickAction}>
-					{tabs.map((dataTab, i) => (
-						<BottomNavigationAction key={i} {...dataTab} />
-					))}
-				</BottomNavigation>
-			</Limiter>
-		</Paper>
+		<>
+			<div className='min-h-14' />
+			<Paper className='w-full fixed bottom-0 bg-none' elevation={4}>
+				<Limiter>
+					<BottomNavigation
+						className='h-14'
+						component='nav'
+						value={pathname}
+						onChange={handleClickAction}
+					>
+						{tabs.map((tab, i) => (
+							<BottomNavigationAction
+								key={i}
+								value={tab.href}
+								label={tab.text}
+								icon={tab.icon}
+							/>
+						))}
+					</BottomNavigation>
+				</Limiter>
+			</Paper>
+		</>
 	);
 };
