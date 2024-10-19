@@ -1,85 +1,115 @@
 import { type Config } from 'tailwindcss';
 
 // noinspection ES6PreferShortImport
-import { BREAKPOINTS, FONT_FAMILY } from './src/lib/styles/style';
+import {
+	BORDER_RADIUS,
+	BREAKPOINTS,
+	FONT_FAMILY
+} from './src/lib/styles/style';
 
 const config: Config = {
-	content: [
-		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/app/**/*.{js,ts,jsx,tsx,mdx}'
-	],
+	content: ['./src/**/*.{js,jsx,ts,tsx}'],
+
+	important: 'html',
+
 	theme: {
-		screens: Object.entries(BREAKPOINTS).reduce((acc, [key, number]) => {
-			return {
-				...acc,
-				[key]: number + 'px'
-			};
-		}, {}),
+		screens: {
+			xs: `${BREAKPOINTS.xs}px`,
+			sm: `${BREAKPOINTS.sm}px`,
+			md: `${BREAKPOINTS.md}px`
+		},
 
 		fontFamily: FONT_FAMILY,
 
-		boxShadow: {
-			0: 'var(--shadows-0)',
-			1: 'var(--shadows-1)',
-			2: 'var(--shadows-2)',
-			3: 'var(--shadows-3)',
-			4: 'var(--shadows-4)',
-			5: 'var(--shadows-5)',
-			6: 'var(--shadows-6)',
-			7: 'var(--shadows-7)',
-			8: 'var(--shadows-8)',
-			9: 'var(--shadows-9)',
-			10: 'var(--shadows-10)',
-			11: 'var(--shadows-11)',
-			12: 'var(--shadows-12)',
-			13: 'var(--shadows-13)',
-			14: 'var(--shadows-14)',
-			15: 'var(--shadows-15)',
-			16: 'var(--shadows-16)',
-			17: 'var(--shadows-17)',
-			18: 'var(--shadows-18)',
-			19: 'var(--shadows-19)',
-			20: 'var(--shadows-20)',
-			21: 'var(--shadows-21)',
-			22: 'var(--shadows-22)',
-			23: 'var(--shadows-23)',
-			24: 'var(--shadows-24)'
+		borderRadius: {
+			none: '0px',
+			sm: `${BORDER_RADIUS / 2}px`,
+			DEFAULT: `${BORDER_RADIUS}px`,
+			lg: `${BORDER_RADIUS * 2}px`,
+			xl: `${BORDER_RADIUS * 3}px`,
+			full: '9999px'
 		},
 
 		extend: {
-			colors: {
-				primary: 'rgb(var(--palette-primary-mainChannel) / <alpha-value>)',
-				'primary-light':
-					'rgb(var(--palette-primary-lightChannel) / <alpha-value>)',
-				'primary-dark':
-					'rgb(var(--palette-primary-darkChannel) / <alpha-value>)',
+			spacing: {
+				container: 'var(--container-spacing)',
+				'container-sm': 'calc(var(--container-spacing) / 1.5)',
+				'container-lg': 'calc(var(--container-spacing) * 1.5)'
+			},
 
-				secondary: 'rgb(var(--palette-secondary-mainChannel) / <alpha-value>)',
-				'secondary-light':
-					'rgb(var(--palette-secondary-lightChannel) / <alpha-value>)',
-				'secondary-dark':
-					'rgb(var(--palette-secondary-darkChannel) / <alpha-value>)',
+			colors: {
+				primary: 'rgb(var(--mui-palette-primary-mainChannel) / <alpha-value>)',
+				'primary-light':
+					'rgb(var(--mui-palette-primary-lightChannel) / <alpha-value>)',
+				'primary-dark':
+					'rgb(var(--mui-palette-primary-darkChannel) / <alpha-value>)',
 
 				'as-bg-default':
-					'rgb(var(--palette-background-defaultChannel) / <alpha-value>)',
+					'rgb(var(--mui-palette-background-defaultChannel) / <alpha-value>)',
 
 				'as-text-primary':
-					'rgb(var(--palette-text-primaryChannel) / <alpha-value>)',
+					'rgb(var(--mui-palette-text-primaryChannel) / <alpha-value>)',
 				'as-text-secondary':
-					'rgb(var(--palette-text-secondaryChannel) / <alpha-value>)',
+					'rgb(var(--mui-palette-text-secondaryChannel) / <alpha-value>)',
 				'as-contrast-text-primary':
-					'rgb(var(--palette-primary-contrastTextChannel) / <alpha-value>)',
-				'as-contrast-text-secondary':
-					'rgb(var(--palette-secondary-contrastTextChannel) / <alpha-value>)',
+					'rgb(var(--mui-palette-primary-contrastTextChannel) / <alpha-value>)',
 
-				'action-active': 'var(--palette-action-active)'
+				'action-active': 'var(--mui-palette-action-active)'
+			},
+
+			boxShadow: {
+				'mui-0': 'var(--mui-shadows-0)',
+				'mui-1': 'var(--mui-shadows-1)',
+				'mui-2': 'var(--mui-shadows-2)',
+				'mui-3': 'var(--mui-shadows-3)',
+				'mui-4': 'var(--mui-shadows-4)',
+				'mui-5': 'var(--mui-shadows-5)',
+				'mui-6': 'var(--mui-shadows-6)',
+				'mui-7': 'var(--mui-shadows-7)',
+				'mui-8': 'var(--mui-shadows-8)',
+				'mui-9': 'var(--mui-shadows-9)',
+				'mui-10': 'var(--mui-shadows-10)',
+				'mui-11': 'var(--mui-shadows-11)',
+				'mui-12': 'var(--mui-shadows-12)',
+				'mui-13': 'var(--mui-shadows-13)',
+				'mui-14': 'var(--mui-shadows-14)',
+				'mui-15': 'var(--mui-shadows-15)',
+				'mui-16': 'var(--mui-shadows-16)',
+				'mui-17': 'var(--mui-shadows-17)',
+				'mui-18': 'var(--mui-shadows-18)',
+				'mui-19': 'var(--mui-shadows-19)',
+				'mui-20': 'var(--mui-shadows-20)',
+				'mui-21': 'var(--mui-shadows-21)',
+				'mui-22': 'var(--mui-shadows-22)',
+				'mui-23': 'var(--mui-shadows-23)',
+				'mui-24': 'var(--mui-shadows-24)'
 			},
 
 			backgroundImage: {
-				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-conic':
-					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+				'overlays-1': 'var(--overlays-1)',
+				'overlays-2': 'var(--overlays-2)',
+				'overlays-3': 'var(--overlays-3)',
+				'overlays-4': 'var(--overlays-4)',
+				'overlays-5': 'var(--overlays-5)',
+				'overlays-6': 'var(--overlays-6)',
+				'overlays-7': 'var(--overlays-7)',
+				'overlays-8': 'var(--overlays-8)',
+				'overlays-9': 'var(--overlays-9)',
+				'overlays-10': 'var(--overlays-10)',
+				'overlays-11': 'var(--overlays-11)',
+				'overlays-12': 'var(--overlays-12)',
+				'overlays-13': 'var(--overlays-13)',
+				'overlays-14': 'var(--overlays-14)',
+				'overlays-15': 'var(--overlays-15)',
+				'overlays-16': 'var(--overlays-16)',
+				'overlays-17': 'var(--overlays-17)',
+				'overlays-18': 'var(--overlays-18)',
+				'overlays-19': 'var(--overlays-19)',
+				'overlays-20': 'var(--overlays-20)',
+				'overlays-21': 'var(--overlays-21)',
+				'overlays-22': 'var(--overlays-22)',
+				'overlays-23': 'var(--overlays-23)',
+				'overlays-24': 'var(--overlays-24)'
 			}
 		}
 	},
