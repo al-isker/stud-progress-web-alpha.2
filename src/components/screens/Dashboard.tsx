@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 
-import { Container } from '@/components/reused/Container';
-import { Limiter } from '@/components/reused/Limiter';
+import { Container } from '@/components/reused/container/Container';
+import { Limiter } from '@/components/reused/limiter/Limiter';
 
 export const Dashboard: FC = () => {
 	return (
