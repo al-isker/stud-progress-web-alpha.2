@@ -8,6 +8,7 @@ import {
 	DialogProps as DialogPropsMUI,
 	DialogTitle
 } from '@mui/material';
+import cn from 'clsx';
 
 type Props = Omit<DialogPropsMUI, 'slotProps' | 'PaperProps' | 'title'> & {
 	icon?: ReactNode;
@@ -43,7 +44,7 @@ export const Dialog = ({
 	>
 		{(icon || title) && (
 			<DialogTitle
-				className={`text-as-text-primary/80 ${classNameHeader ?? ''}`}
+				className={cn('text-as-text-primary/80', classNameHeader)}
 				sx={{
 					display: 'flex',
 					alignItems: 'center',

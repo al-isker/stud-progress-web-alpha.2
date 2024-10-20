@@ -3,6 +3,7 @@
 import { FC } from 'react';
 
 import { FormHelperText } from '@mui/material';
+import cn from 'clsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { RHFInputText } from '@/components/fields/rhf/RHFInputText';
@@ -28,7 +29,10 @@ export const LoginFormBody: FC<Props> = ({
 
 	return (
 		<div
-			className={`${className ?? ''} w-full max-w-80 rounded bg-as-bg-default bg-overlays-4 p-4 shadow-sm`}
+			className={cn(
+				'w-full max-w-80 rounded bg-as-bg-default bg-overlays-4 p-4 shadow-sm',
+				className
+			)}
 		>
 			<form className='flex flex-col gap-y-4' onSubmit={handleSubmit(onSubmit)}>
 				<RHFInputText

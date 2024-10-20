@@ -1,5 +1,7 @@
 import { type FC, type ReactNode } from 'react';
 
+import cn from 'clsx';
+
 import { BREAKPOINTS } from '@/lib/styles/style';
 
 interface Props {
@@ -9,7 +11,7 @@ interface Props {
 
 export const Limiter: FC<Props> = ({ children, className }) => (
 	<div
-		className={`${className ?? ''} mx-auto w-full`}
+		className={cn('mx-auto w-full', className)}
 		style={{ maxWidth: BREAKPOINTS.max }}
 	>
 		{children}
