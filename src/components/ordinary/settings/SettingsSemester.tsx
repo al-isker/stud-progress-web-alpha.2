@@ -70,7 +70,7 @@ interface SemesterMenuItemProps {
 	isLoading?: boolean;
 }
 
-const SemesterMenuItem = memo(function fn({
+const SemesterMenuItem = memo(function SemesterMenuItem({
 	onClick,
 	isLoading
 }: SemesterMenuItemProps) {

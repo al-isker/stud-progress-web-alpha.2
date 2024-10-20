@@ -15,7 +15,7 @@ interface Props
 	onUpload: (value: File) => void;
 }
 
-export const Upload = forwardRef(function fn(
+export const Upload = forwardRef(function Upload(
 	{ children, onUpload, ...InputProps }: Props,
 	ref: Ref<HTMLInputElement>
 ) {

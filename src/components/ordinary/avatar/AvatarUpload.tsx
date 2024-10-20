@@ -13,7 +13,7 @@ interface Props {
 	onInfo: () => void;
 }
 
-export const AvatarUpload = memo(function fn({
+export const AvatarUpload = memo(function AvatarUpload({
 	avatar,
 	onUpload,
 	onDelete,
