@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 import { CssBaseline } from '@mui/material';
 
@@ -7,7 +7,7 @@ import { ReduxProvider } from '@/components/providers/redux';
 
 import '@/lib/styles/global.css';
 
-export default ({ children }: { children: ReactNode }) => (
+const MainLayout: FC<PropsWithChildren> = ({ children }) => (
 	<ReduxProvider>
 		<MaterialProvider>
 			{/* <SupportDeviceScript /> */}
@@ -16,3 +16,5 @@ export default ({ children }: { children: ReactNode }) => (
 		</MaterialProvider>
 	</ReduxProvider>
 );
+
+export default MainLayout;

@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
-import { type ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 const font = IBM_Plex_Sans({
 	subsets: ['latin'],
@@ -10,11 +10,14 @@ const font = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
 	title: 'Stud Progress',
+	description: 'Новый личный кабинет для студентов ДГМУ',
 	icons: { icon: '/favicon.svg' }
 };
 
-export default ({ children }: Readonly<{ children: ReactNode }>) => (
+const RootLayout: FC<PropsWithChildren> = ({ children }) => (
 	<html lang='ru'>
 		<body className={font.className}>{children}</body>
 	</html>
 );
+
+export default RootLayout;
