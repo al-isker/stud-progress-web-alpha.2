@@ -1,4 +1,4 @@
-import { type Metadata } from 'next';
+import { Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
 import { FC, PropsWithChildren } from 'react';
 

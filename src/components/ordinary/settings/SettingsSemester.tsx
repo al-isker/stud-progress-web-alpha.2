@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 
 import { AppRegistration, ArrowDropDown } from '@mui/icons-material';
 
@@ -12,7 +12,7 @@ import { semesterOptions } from '@/lib/constants/options';
 import { useShowHide } from '@/lib/hooks/useShowHide';
 import { ProfileService } from '@/lib/services/profileService';
 
-export const SettingsSemester: FC = () => {
+export const SettingsSemester = () => {
 	const select = useShowHide();
 	const message = useShowHide();
 

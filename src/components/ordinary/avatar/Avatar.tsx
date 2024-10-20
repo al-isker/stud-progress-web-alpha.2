@@ -1,6 +1,6 @@
 'use client';
 
-import { type FC, useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { Lock } from '@mui/icons-material';
 
@@ -14,7 +14,7 @@ import { useShowHide } from '@/lib/hooks/useShowHide';
 
 import { AvatarUpload } from './AvatarUpload';
 
-export const Avatar: FC = () => {
+export const Avatar = () => {
 	const {
 		image: avatar,
 		setImage: setAvatar,

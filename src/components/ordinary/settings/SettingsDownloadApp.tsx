@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { FC } from 'react';
 
 import { Android, Apple, GetApp } from '@mui/icons-material';
 
@@ -12,7 +11,7 @@ import { MenuItem } from '@/components/reused/menu-item/MenuItem';
 import { DOWNLOAD_LINKS } from '@/lib/constants/routes';
 import { useShowHide } from '@/lib/hooks/useShowHide';
 
-export const SettingsDownloadApp: FC = () => {
+export const SettingsDownloadApp = () => {
 	const prompt = useShowHide();
 
 	return (

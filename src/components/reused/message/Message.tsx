@@ -1,23 +1,22 @@
-import { ReactNode, SyntheticEvent } from 'react';
+import { SyntheticEvent } from 'react';
 
 import {
 	Alert,
 	AlertProps,
-	AlertTitle,
 	Snackbar,
 	SnackbarCloseReason,
 	SnackbarProps
 } from '@mui/material';
 
-type Props = Pick<SnackbarProps, 'open' | 'anchorOrigin' | 'autoHideDuration'> &
-	Omit<AlertProps, 'onClose'> & {
-		onClose: (
-			e: SyntheticEvent | Event,
-			reason: SnackbarCloseReason | 'clickButton'
-		) => void;
-		title?: ReactNode;
-		noCloseButton?: boolean;
-	};
+interface Props
+	extends Pick<SnackbarProps, 'open' | 'anchorOrigin' | 'autoHideDuration'>,
+		Omit<AlertProps, 'onClose'> {
+	onClose: (
+		e: SyntheticEvent | Event,
+		reason: SnackbarCloseReason | 'clickButton'
+	) => void;
+	noCloseButton?: boolean;
+}
 
 export const Message = ({
 	children,
@@ -40,15 +39,12 @@ export const Message = ({
 			}
 		}
 	>
-		{children || title ? (
-			<Alert
-				className='shadow-md shadow-black/15'
-				onClose={!noCloseButton ? e => onClose(e, 'clickButton') : undefined}
-				{...AlertProps}
-			>
-				{title && <AlertTitle>{title}</AlertTitle>}
-				{children}
-			</Alert>
-		) : undefined}
+		<Alert
+			className='shadow-md shadow-black/15'
+			onClose={!noCloseButton ? e => onClose(e, 'clickButton') : undefined}
+			{...AlertProps}
+		>
+			{children}
+		</Alert>
 	</Snackbar>
 );

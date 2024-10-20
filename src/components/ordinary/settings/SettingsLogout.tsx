@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
 import { LogoutOutlined } from '@mui/icons-material';
 
@@ -10,7 +10,7 @@ import { MenuItem } from '@/components/reused/menu-item/MenuItem';
 import { ROUTES } from '@/lib/constants/routes';
 import { AuthService } from '@/lib/services/authService';
 
-export const SettingsLogout: FC = () => {
+export const SettingsLogout = () => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const router = useRouter();

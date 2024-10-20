@@ -8,20 +8,18 @@ import { Badge } from '@mui/material';
 
 import { ROUTES } from '@/lib/constants/routes';
 
-interface Arguments {
-	isHomeNew?: boolean;
-	isSessionNew?: boolean;
+interface IsBadge {
+	home?: boolean;
+	session?: boolean;
 }
 
-export const useTabs = (badges?: Arguments) => {
-	const { isHomeNew, isSessionNew } = badges ?? {};
-
+export const useTabs = (badge: IsBadge = {}) => {
 	return [
 		{
 			text: 'Главная',
 			href: ROUTES.home,
 			icon: (
-				<Badge color='primary' variant='dot' invisible={!isHomeNew}>
+				<Badge color='primary' variant='dot' invisible={!badge.home}>
 					<HomeRounded />
 				</Badge>
 			)
@@ -30,7 +28,7 @@ export const useTabs = (badges?: Arguments) => {
 			text: 'Сессия',
 			href: ROUTES.session,
 			icon: (
-				<Badge color='primary' variant='dot' invisible={!isSessionNew}>
+				<Badge color='primary' variant='dot' invisible={!badge.session}>
 					<SchoolRounded />
 				</Badge>
 			)

@@ -5,13 +5,20 @@ import {
 	InputTextProps
 } from '@/components/fields/simple/InputText';
 
-type Props<T extends FieldValues> = Omit<ControllerProps<T>, 'render'> &
-	Omit<
-		InputTextProps,
-		'inputRef' | 'value' | 'onChange' | 'onBlur' | 'error' | 'helperText'
-	>;
+interface Props<FV extends FieldValues>
+	extends Omit<ControllerProps<FV>, 'render'>,
+		Omit<
+			InputTextProps,
+			| 'inputRef'
+			| 'name'
+			| 'value'
+			| 'defaultValue'
+			| 'onChange'
+			| 'onBlur'
+			| 'disabled'
+		> {}
 
-export const RHFInputText = <T extends FieldValues>({
+export const RHFInputText = <FV extends FieldValues>({
 	control,
 	name,
 	rules,
@@ -19,7 +26,7 @@ export const RHFInputText = <T extends FieldValues>({
 	defaultValue,
 	disabled,
 	...SelectProps
-}: Props<T>) => (
+}: Props<FV>) => (
 	<Controller
 		control={control}
 		name={name}
@@ -27,15 +34,13 @@ export const RHFInputText = <T extends FieldValues>({
 		shouldUnregister={shouldUnregister}
 		defaultValue={defaultValue}
 		disabled={disabled}
-		render={({ field, fieldState: { error } }) => (
+		render={({ field: { ref, value, ...field }, fieldState: { error } }) => (
 			<InputText
-				inputRef={field.ref}
-				name={field.name}
-				value={field.value ?? ''}
-				onChange={field.onChange}
-				onBlur={field.onBlur}
+				inputRef={ref}
+				value={value ?? ''}
 				error={!!error}
 				helperText={error?.message}
+				{...field}
 				{...SelectProps}
 			/>
 		)}

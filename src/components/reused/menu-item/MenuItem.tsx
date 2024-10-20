@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { NavigateNext } from '@mui/icons-material';
 import { Icon, MenuItem as MenuItemMUI, MenuItemProps } from '@mui/material';
@@ -8,19 +8,20 @@ import { Container } from '@/components/reused/container/Container';
 
 import { Loader } from '../loader/Loader';
 
-type Props = Omit<MenuItemProps, 'sx' | 'disableGutters' | 'disabled'> & {
+interface Props
+	extends Omit<MenuItemProps, 'sx' | 'disableGutters' | 'disabled'> {
 	icon: ReactNode;
 	text: string;
 	loading?: boolean;
-};
+}
 
-export const MenuItem: FC<Props> = ({
+export const MenuItem = ({
 	children,
 	icon,
 	text,
 	loading,
 	...MenuItemProps
-}) => {
+}: Props) => {
 	return (
 		<MenuItemMUI
 			sx={{ height: '3.5rem', paddingBlock: 0 }}

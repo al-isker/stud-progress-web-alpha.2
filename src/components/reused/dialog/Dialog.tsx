@@ -10,7 +10,8 @@ import {
 } from '@mui/material';
 import cn from 'clsx';
 
-type Props = Omit<DialogPropsMUI, 'slotProps' | 'PaperProps' | 'title'> & {
+interface Props
+	extends Omit<DialogPropsMUI, 'slotProps' | 'PaperProps' | 'title'> {
 	icon?: ReactNode;
 	title?: ReactNode;
 	text?: ReactNode;
@@ -18,7 +19,7 @@ type Props = Omit<DialogPropsMUI, 'slotProps' | 'PaperProps' | 'title'> & {
 	classNameHeader?: string;
 	classNameContent?: string;
 	classNameActions?: string;
-};
+}
 
 export const Dialog = ({
 	children,
@@ -79,4 +80,4 @@ export const Dialog = ({
 	</DialogMUI>
 );
 
-export type DialogProps = Props;
+export type { Props as DialogProps };

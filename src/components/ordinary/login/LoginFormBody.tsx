@@ -1,7 +1,5 @@
 'use client';
 
-import { FC } from 'react';
-
 import { FormHelperText } from '@mui/material';
 import cn from 'clsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -14,17 +12,13 @@ import { semesterOptions } from '@/lib/constants/options';
 import { LoginSchema } from '@/lib/types/schemes';
 import { maxLength, minLength, required } from '@/lib/utils/validations';
 
-type Props = {
+interface Props {
 	className?: string;
 	errorMessage?: string;
 	onSubmit: SubmitHandler<LoginSchema>;
-};
+}
 
-export const LoginFormBody: FC<Props> = ({
-	className,
-	errorMessage,
-	onSubmit
-}) => {
+export const LoginFormBody = ({ className, errorMessage, onSubmit }: Props) => {
 	const { control, handleSubmit } = useForm<LoginSchema>();
 
 	return (

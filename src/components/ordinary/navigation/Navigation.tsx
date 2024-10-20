@@ -1,18 +1,22 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { type FC, type SyntheticEvent } from 'react';
+import { SyntheticEvent } from 'react';
 
-import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
+import {
+	BottomNavigationAction,
+	BottomNavigation as BottomNavigationMUI,
+	Paper
+} from '@mui/material';
 
 import { useTabs } from '@/components/other/useTabs';
 import { Limiter } from '@/components/reused/limiter/Limiter';
 
-export const Navigation: FC = () => {
+export const BottomNavigation = () => {
 	const pathname = usePathname();
 	const router = useRouter();
 
-	const handleClickAction = (_: SyntheticEvent, route: string) => {
+	const handleChange = (_: SyntheticEvent, route: string) => {
 		router.push(route);
 	};
 
@@ -26,11 +30,11 @@ export const Navigation: FC = () => {
 			<div className='min-h-14' />
 			<Paper className='fixed bottom-0 w-full bg-none' elevation={4}>
 				<Limiter>
-					<BottomNavigation
+					<BottomNavigationMUI
 						className='h-14'
 						component='nav'
 						value={pathname}
-						onChange={handleClickAction}
+						onChange={handleChange}
 					>
 						{tabs.map((tab, i) => (
 							<BottomNavigationAction
@@ -40,7 +44,7 @@ export const Navigation: FC = () => {
 								icon={tab.icon}
 							/>
 						))}
-					</BottomNavigation>
+					</BottomNavigationMUI>
 				</Limiter>
 			</Paper>
 		</>

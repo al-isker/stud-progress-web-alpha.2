@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useShowHide } from './useShowHide';
 
-interface IReturn {
+interface LocaleImage {
 	image: string | undefined;
 	setImage: (image: File) => void;
 	removeImage: () => void;
@@ -14,7 +14,7 @@ interface IReturn {
 	};
 }
 
-export const useLocaleImage = (path: string, maxSize?: number): IReturn => {
+export const useLocaleImage = (path: string, maxSize?: number): LocaleImage => {
 	const [stateImage, setStateImage] = useState<string>();
 
 	const message = useShowHide();

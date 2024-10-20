@@ -1,8 +1,8 @@
 import { FabProps, SpeedDial, SpeedDialProps, styled } from '@mui/material';
 
-type Props = Omit<SpeedDialProps, 'FabProps'> & {
+interface Props extends Omit<SpeedDialProps, 'FabProps'> {
 	FabProps?: Omit<FabProps, 'size'>;
-};
+}
 
 export const StyledSpeedDial = styled(SpeedDial)({
 	'& .MuiSpeedDial-actions': {

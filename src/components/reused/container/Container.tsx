@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import cn from 'clsx';
 
@@ -7,6 +7,6 @@ interface Props {
 	className?: string;
 }
 
-export const Container: FC<Props> = ({ children, className }) => (
+export const Container = ({ children, className }: Props) => (
 	<div className={cn('w-full px-container', className)}>{children}</div>
 );

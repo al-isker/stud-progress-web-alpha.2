@@ -1,14 +1,14 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { InvertColors } from '@mui/icons-material';
-import { type PaletteMode, useColorScheme } from '@mui/material/';
+import { PaletteMode, useColorScheme } from '@mui/material/';
 
 import { MenuItem } from '@/components/reused/menu-item/MenuItem';
 import { Switch } from '@/components/reused/switch/Switch';
 
-export const SettingsMode: FC = () => {
+export const SettingsMode = () => {
 	const { mode, setMode } = useColorScheme();
 
 	const handleClick = () => {
@@ -22,12 +22,14 @@ export const SettingsMode: FC = () => {
 	);
 };
 
-const SwitchMode: FC<{ mode: PaletteMode }> = ({ mode }) => {
+const SwitchMode = ({ mode }: { mode: PaletteMode }) => {
 	const [mount, setMount] = useState(false);
 
 	useEffect(() => {
 		setMount(true);
 	}, []);
 
-	if (mount) return <Switch className='-mx-1' checked={mode === 'dark'} />;
+	if (mount) {
+		return <Switch className='-mx-1' checked={mode === 'dark'} />;
+	}
 };

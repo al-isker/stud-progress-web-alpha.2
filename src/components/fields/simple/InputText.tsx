@@ -1,11 +1,7 @@
-import { type FC } from 'react';
+import { TextField, TextFieldProps } from '@mui/material';
 
-import { TextField, type TextFieldProps } from '@mui/material';
+interface Props extends Omit<TextFieldProps, 'fullWidth'> {}
 
-type Props = TextFieldProps;
+export const InputText = (props: Props) => <TextField fullWidth {...props} />;
 
-export const InputText: FC<Props> = ({ ...TextFieldProps }) => (
-	<TextField fullWidth {...TextFieldProps} />
-);
-
-export type InputTextProps = Props;
+export type { Props as InputTextProps };

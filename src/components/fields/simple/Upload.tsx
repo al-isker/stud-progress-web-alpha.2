@@ -1,5 +1,5 @@
 import {
-	type ChangeEvent,
+	ChangeEvent,
 	InputHTMLAttributes,
 	ReactNode,
 	Ref,
@@ -42,3 +42,5 @@ export const Upload = forwardRef(function Upload(
 		</>
 	);
 });
+
+export type { Props as UploadProps };

@@ -9,31 +9,32 @@ import { Dialog } from '@/components/reused/dialog/Dialog';
 
 import { IOption } from '@/lib/types';
 
-type Props<Value = unknown> = Omit<
-	DialogProps,
-	'slotProps' | 'PaperProps' | 'onChange' | 'onClose'
-> &
-	Pick<MenuItemProps, 'dense'> & {
-		label: ReactNode;
-		options: IOption<Value>[];
-		value?: Value | null;
-		onChange?: (value: Value) => void;
-		onClose?: (event: MouseEvent) => void;
-	};
+interface Props<V = unknown>
+	extends Omit<
+			DialogProps,
+			'slotProps' | 'PaperProps' | 'onChange' | 'onClose'
+		>,
+		Pick<MenuItemProps, 'dense'> {
+	label: ReactNode;
+	options: IOption<V>[];
+	value?: V;
+	onChange?: (value: V) => void;
+	onClose?: (event: MouseEvent) => void;
+}
 
-export const DialogSelect = <Value,>({
+export const DialogSelect = <V,>({
 	label,
 	options,
 	value,
 	onChange,
 	dense,
 	...DialogProps
-}: Props<Value>) => {
+}: Props<V>) => {
 	const handleClose = (e: MouseEvent) => {
 		DialogProps.onClose && DialogProps.onClose(e);
 	};
 
-	const handleClickOption = (e: MouseEvent, newValue: Value) => {
+	const handleClickOption = (e: MouseEvent, newValue: V) => {
 		handleClose(e);
 
 		if (value !== newValue) {
@@ -69,4 +70,4 @@ export const DialogSelect = <Value,>({
 	);
 };
 
-export type DialogSelectProps<Value = unknown> = Props<Value>;
+export type { Props as DialogSelectProps };

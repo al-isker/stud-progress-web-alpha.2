@@ -1,6 +1,6 @@
-import { type FC, type ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-export const Main: FC<{ children: ReactNode }> = ({ children }) => {
+export const Main = ({ children }: { children?: ReactNode }) => {
 	return (
 		<main className='bg-gradient-to-b from-primary-light/5 to-primary-light/10'>
 			{children}

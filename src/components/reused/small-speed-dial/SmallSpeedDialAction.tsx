@@ -5,9 +5,9 @@ import {
 	styled
 } from '@mui/material';
 
-type Props = Omit<SpeedDialActionProps, 'FabProps'> & {
+interface Props extends Omit<SpeedDialActionProps, 'FabProps'> {
 	FabProps?: Omit<FabProps, 'size'>;
-};
+}
 
 const StyledSpeedDialAction = styled(SpeedDialAction)({
 	margin: '0.2rem'

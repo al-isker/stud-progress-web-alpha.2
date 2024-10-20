@@ -1,8 +1,6 @@
-import { type FC } from 'react';
-
 import { UserInfoItem } from './UserInfoItem';
 
-export const UserInfo: FC = () => {
+export const UserInfo = () => {
 	return (
 		<div className='flex gap-x-3'>
 			<UserInfoItem number={3} caption='курс' />

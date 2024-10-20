@@ -13,19 +13,19 @@ import { IOption } from '@/lib/types';
 
 import { DialogSelect } from './DialogSelect';
 
-type Props = Omit<
-	TextFieldProps,
-	'select' | 'SelectProps' | 'value' | 'onChange'
-> & {
+interface Props<V = unknown>
+	extends Omit<
+		TextFieldProps,
+		'select' | 'fullWidth' | 'SelectProps' | 'value' | 'onChange'
+	> {
+	options: IOption<V>[];
+	value?: V;
+	onChange?: (value: V) => void;
 	SelectProps?: Omit<SelectPropsMUI, 'open'>;
-} & {
-	options: IOption<unknown>[];
-	value?: unknown;
-	onChange?: (value: unknown) => void;
 	keepModalMounted?: boolean;
-};
+}
 
-export const Select = ({
+export const Select = <V,>({
 	options,
 	value,
 	onClick,
@@ -33,7 +33,7 @@ export const Select = ({
 	SelectProps,
 	keepModalMounted,
 	...TextFieldProps
-}: Props) => {
+}: Props<V>) => {
 	const select = useShowHide();
 
 	const handleClickSelect = (e: MouseEvent<HTMLDivElement>) => {
@@ -42,7 +42,7 @@ export const Select = ({
 		onClick && onClick(e);
 	};
 
-	const handleChangeModalSelect = (value: unknown) => {
+	const handleChangeModalSelect = (value: V) => {
 		onChange && onChange(value);
 	};
 
@@ -78,4 +78,4 @@ export const Select = ({
 	);
 };
 
-export type SelectProps = Props;
+export type { Props as SelectProps };

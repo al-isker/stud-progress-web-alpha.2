@@ -1,4 +1,4 @@
-import { type Config } from 'tailwindcss';
+import { Config } from 'tailwindcss';
 
 // noinspection ES6PreferShortImport
 import {

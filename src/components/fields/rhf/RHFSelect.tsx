@@ -1,14 +1,21 @@
-import { Controller, type ControllerProps, FieldValues } from 'react-hook-form';
+import { Controller, ControllerProps, FieldValues } from 'react-hook-form';
 
 import { Select, SelectProps } from '@/components/fields/simple/Select';
 
-type Props<T extends FieldValues> = Omit<ControllerProps<T>, 'render'> &
-	Omit<
-		SelectProps,
-		'inputRef' | 'value' | 'onChange' | 'onBlur' | 'error' | 'helperText'
-	>;
+interface Props<FV extends FieldValues>
+	extends Omit<ControllerProps<FV>, 'render'>,
+		Omit<
+			SelectProps,
+			| 'inputRef'
+			| 'name'
+			| 'value'
+			| 'defaultValue'
+			| 'onChange'
+			| 'onBlur'
+			| 'disabled'
+		> {}
 
-export const RHFSelect = <T extends FieldValues>({
+export const RHFSelect = <FV extends FieldValues>({
 	control,
 	name,
 	rules,
@@ -16,7 +23,7 @@ export const RHFSelect = <T extends FieldValues>({
 	defaultValue,
 	disabled,
 	...SelectProps
-}: Props<T>) => (
+}: Props<FV>) => (
 	<Controller
 		control={control}
 		name={name}
@@ -24,15 +31,13 @@ export const RHFSelect = <T extends FieldValues>({
 		shouldUnregister={shouldUnregister}
 		defaultValue={defaultValue}
 		disabled={disabled}
-		render={({ field, fieldState: { error } }) => (
+		render={({ field: { ref, value, ...field }, fieldState: { error } }) => (
 			<Select
-				inputRef={field.ref}
-				name={field.name}
-				value={field.value ?? ''}
-				onChange={field.onChange}
-				onBlur={field.onBlur}
+				inputRef={ref}
+				value={value ?? ''}
 				error={!!error}
 				helperText={error?.message}
+				{...field}
 				{...SelectProps}
 			/>
 		)}

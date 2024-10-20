@@ -1,6 +1,6 @@
-import { type RegisterOptions } from 'react-hook-form';
+import { RegisterOptions } from 'react-hook-form';
 
-type RequiredType = { required: RegisterOptions['required'] };
+type RequiredType = Pick<RegisterOptions, 'required'>;
 
 export const required = (): RequiredType => ({
 	required: {
@@ -9,7 +9,7 @@ export const required = (): RequiredType => ({
 	}
 });
 
-type MinLengthType = { minLength: RegisterOptions['minLength'] };
+type MinLengthType = Pick<RegisterOptions, 'minLength'>;
 
 export const minLength = (
 	value: number,
@@ -21,7 +21,7 @@ export const minLength = (
 	}
 });
 
-type MaxLengthType = { maxLength: RegisterOptions['maxLength'] };
+type MaxLengthType = Pick<RegisterOptions, 'maxLength'>;
 
 export const maxLength = (
 	value: number,
