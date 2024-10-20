@@ -28,7 +28,7 @@ export const LoginFormBody: FC<Props> = ({
 
 	return (
 		<div
-			className={`${className ?? ''} w-full max-w-80 p-4 rounded shadow-sm bg-as-bg-default bg-overlays-4`}
+			className={`${className ?? ''} w-full max-w-80 rounded bg-as-bg-default bg-overlays-4 p-4 shadow-sm`}
 		>
 			<form className='flex flex-col gap-y-4' onSubmit={handleSubmit(onSubmit)}>
 				<RHFInputText
@@ -70,7 +70,7 @@ export const LoginFormBody: FC<Props> = ({
 						начать
 					</Button>
 					{errorMessage && (
-						<FormHelperText error className='text-center lowercase -mb-2'>
+						<FormHelperText error className='-mb-2 text-center lowercase'>
 							{errorMessage}
 						</FormHelperText>
 					)}

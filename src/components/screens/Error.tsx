@@ -8,7 +8,7 @@ export const Error = () => {
 	const message = searchParams.get('message');
 
 	return (
-		<div className='h-full p-container grid place-content-center'>
+		<div className='grid h-full place-content-center p-container'>
 			<p className='text-center'>{message}</p>
 		</div>
 	);

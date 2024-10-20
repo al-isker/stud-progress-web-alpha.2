@@ -24,7 +24,7 @@ export const Navigation: FC = () => {
 	return (
 		<>
 			<div className='min-h-14' />
-			<Paper className='w-full fixed bottom-0 bg-none' elevation={4}>
+			<Paper className='fixed bottom-0 w-full bg-none' elevation={4}>
 				<Limiter>
 					<BottomNavigation
 						className='h-14'

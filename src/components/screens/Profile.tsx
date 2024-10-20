@@ -7,17 +7,15 @@ import { UserName } from '@/components/ordinary/userName/UserName';
 import { Container } from '@/components/reused/container/Container';
 import { Limiter } from '@/components/reused/limiter/Limiter';
 
-export const Profile: FC = () => {
-	return (
-		<Limiter className='h-full'>
-			<Container className='h-full'>
-				<div className='relative min-h-full pt-container flex flex-col gap-4'>
-					<Avatar />
-					<UserName />
-					<UserInfo />
-					<Settings className='flex-grow' />
-				</div>
-			</Container>
-		</Limiter>
-	);
-};
+export const Profile: FC = () => (
+	<Limiter className='h-full'>
+		<Container className='h-full'>
+			<div className='relative flex min-h-full flex-col gap-4 pt-container'>
+				<Avatar />
+				<UserName />
+				<UserInfo />
+				<Settings className='flex-grow' />
+			</div>
+		</Container>
+	</Limiter>
+);

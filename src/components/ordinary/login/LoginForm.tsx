@@ -50,7 +50,7 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<div className='h-full flex flex-col justify-center gap-y-4'>
+		<div className='flex h-full flex-col justify-center gap-y-4'>
 			<LoginFormHeader loading={isLoading} />
 
 			<motion.div

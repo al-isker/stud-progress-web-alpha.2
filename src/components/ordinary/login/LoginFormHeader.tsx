@@ -8,10 +8,10 @@ export const LoginFormHeader = ({ loading }: { loading: boolean }) => {
 		<div className='text-center'>
 			<div className='text-primary'>
 				{loading ? (
-					<Loader className='h-12 mb-2' />
+					<Loader className='mb-2 h-12' />
 				) : (
 					<motion.img
-						className='h-14 inline-block'
+						className='inline-block h-14'
 						src='/favicon.svg'
 						alt='stud-progress'
 						initial={{ rotate: '-90deg' }}

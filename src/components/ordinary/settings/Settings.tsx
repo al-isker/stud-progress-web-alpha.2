@@ -9,9 +9,9 @@ import { SettingsSemester } from './SettingsSemester';
 
 export const Settings = ({ className }: { className?: string }) => (
 	<div
-		className={`${className ?? ''} bg-as-bg-default rounded-t flex flex-col`}
+		className={`${className ?? ''} flex flex-col rounded-t bg-as-bg-default`}
 	>
-		<span className='mt-2 mb-2 mx-auto w-8 h-1 bg-as-text-primary/20 rounded-full' />
+		<span className='mx-auto mb-2 mt-2 h-1 w-8 rounded-full bg-as-text-primary/20' />
 
 		<SettingsMode />
 		<Divider className='!my-0' variant='middle' />

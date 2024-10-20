@@ -26,14 +26,14 @@ export const AvatarUpload = memo(function AvatarUpload({
 			<Upload ref={uploadRef} accept='.png,.jpg' onUpload={onUpload} />
 
 			<AvatarActions
-				className='absolute top-5 right-0'
+				className='absolute right-0 top-5'
 				onClickUpload={() => uploadRef.current?.click()}
 				onClickDelete={onDelete}
 				onClickInfo={onInfo}
 			/>
 
 			<AvatarMUI
-				className='shrink mx-auto min-w-48 min-h-48 shadow-mui-2'
+				className='mx-auto min-h-48 min-w-48 shrink shadow-mui-2'
 				src={avatar}
 				alt='Аватар студента'
 			/>

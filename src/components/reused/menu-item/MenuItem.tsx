@@ -28,17 +28,17 @@ export const MenuItem: FC<Props> = ({
 			disabled={loading}
 			{...MenuItemProps}
 		>
-			<Container className='h-full flex items-center gap-3'>
+			<Container className='flex h-full items-center gap-3'>
 				<MenuItemIcon
-					className='bg-primary-dark/15 rounded-sm p-4 text-as-text-primary/80'
+					className='rounded-sm bg-primary-dark/15 p-4 text-as-text-primary/80'
 					fontSize='small'
 				>
 					{icon}
 				</MenuItemIcon>
-				<div className='flex-grow text-ellipsis text-nowrap overflow-hidden'>
+				<div className='flex-grow overflow-hidden text-ellipsis text-nowrap'>
 					{text}
 				</div>
-				<div className='max-h-fit h-full'>
+				<div className='h-full max-h-fit'>
 					{loading ? (
 						<Loader className='h-1/2 text-primary/90' />
 					) : (

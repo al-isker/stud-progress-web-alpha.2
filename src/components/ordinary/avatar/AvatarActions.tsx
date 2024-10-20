@@ -34,7 +34,7 @@ export const AvatarActions = ({
 			open={speedDial.isShow}
 			onOpen={speedDial.show}
 			onClose={speedDial.hide}
-			icon={<SpeedDialIcon className='flex justify-center items-center' />}
+			icon={<SpeedDialIcon className='flex items-center justify-center' />}
 		>
 			<SmallSpeedDialAction
 				icon={<Edit fontSize='small' />}

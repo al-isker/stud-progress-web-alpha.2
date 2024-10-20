@@ -9,7 +9,7 @@ interface Props {
 
 export const Limiter: FC<Props> = ({ children, className }) => (
 	<div
-		className={`${className ?? ''} w-full mx-auto`}
+		className={`${className ?? ''} mx-auto w-full`}
 		style={{ maxWidth: BREAKPOINTS.max }}
 	>
 		{children}
