@@ -7,12 +7,10 @@ interface Props {
 
 export const UserInfoItem = ({ number, caption }: Props) => {
 	return (
-		<div className='w-full rounded bg-as-bg-default py-3 shadow-sm'>
+		<div className='w-full rounded bg-white py-3 shadow-sm'>
 			<Container className='flex flex-col items-center'>
-				<span className='text-2xl font-bold text-as-text-primary/80'>
-					{number}
-				</span>
-				<span className='text-nowrap tracking-wide text-as-text-primary/70'>
+				<span className='text-2xl font-bold text-black/80'>{number}</span>
+				<span className='text-nowrap tracking-wide text-black/70'>
 					{caption}
 				</span>
 			</Container>

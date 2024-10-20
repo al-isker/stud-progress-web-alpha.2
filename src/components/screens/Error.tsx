@@ -2,14 +2,16 @@
 
 import { useSearchParams } from 'next/navigation';
 
+import { Container } from '@/components/reused/container/Container';
+
 export const Error = () => {
 	const searchParams = useSearchParams();
 
 	const message = searchParams.get('message');
 
 	return (
-		<div className='grid h-full place-content-center p-container'>
+		<Container className='grid h-full place-content-center'>
 			<p className='text-center'>{message}</p>
-		</div>
+		</Container>
 	);
 };

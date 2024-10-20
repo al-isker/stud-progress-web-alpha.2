@@ -81,7 +81,7 @@ const SemesterMenuItem = memo(function SemesterMenuItem({
 			onClick={onClick}
 			loading={isLoading}
 		>
-			<ArrowDropDown className='text-as-text-primary/80' />
+			<ArrowDropDown className='text-black/80' />
 		</MenuItem>
 	);
 });

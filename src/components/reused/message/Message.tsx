@@ -40,7 +40,7 @@ export const Message = ({
 		}
 	>
 		<Alert
-			className='shadow-md shadow-black/15'
+			className='shadow-always-blackest/15 shadow-md'
 			onClose={!noCloseButton ? e => onClose(e, 'clickButton') : undefined}
 			{...AlertProps}
 		>

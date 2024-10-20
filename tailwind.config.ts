@@ -30,31 +30,28 @@ const config: Config = {
 			full: '9999px'
 		},
 
+		colors: {
+			primary: 'rgb(var(--mui-palette-primary-mainChannel) / <alpha-value>)',
+			'primary-light':
+				'rgb(var(--mui-palette-primary-lightChannel) / <alpha-value>)',
+			'primary-dark':
+				'rgb(var(--mui-palette-primary-darkChannel) / <alpha-value>)',
+
+			white:
+				'rgb(var(--mui-palette-background-defaultChannel) / <alpha-value>)',
+
+			black: 'rgb(var(--mui-palette-text-primaryChannel) / <alpha-value>)',
+
+			'always-white': 'rgb(255 255 255 / <alpha-value>)',
+			'always-black': 'rgb(18 18 18 / <alpha-value>)',
+			'always-blackest': 'rgb(0 0 0 / <alpha-value>)'
+		},
+
 		extend: {
 			spacing: {
 				container: 'var(--container-spacing)',
 				'container-sm': 'calc(var(--container-spacing) / 1.5)',
 				'container-lg': 'calc(var(--container-spacing) * 1.5)'
-			},
-
-			colors: {
-				primary: 'rgb(var(--mui-palette-primary-mainChannel) / <alpha-value>)',
-				'primary-light':
-					'rgb(var(--mui-palette-primary-lightChannel) / <alpha-value>)',
-				'primary-dark':
-					'rgb(var(--mui-palette-primary-darkChannel) / <alpha-value>)',
-
-				'as-bg-default':
-					'rgb(var(--mui-palette-background-defaultChannel) / <alpha-value>)',
-
-				'as-text-primary':
-					'rgb(var(--mui-palette-text-primaryChannel) / <alpha-value>)',
-				'as-text-secondary':
-					'rgb(var(--mui-palette-text-secondaryChannel) / <alpha-value>)',
-				'as-contrast-text-primary':
-					'rgb(var(--mui-palette-primary-contrastTextChannel) / <alpha-value>)',
-
-				'action-active': 'var(--mui-palette-action-active)'
 			},
 
 			boxShadow: {

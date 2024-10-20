@@ -31,7 +31,7 @@ export const MenuItem = ({
 		>
 			<Container className='flex h-full items-center gap-3'>
 				<MenuItemIcon
-					className='rounded-sm bg-primary-dark/15 p-4 text-as-text-primary/80'
+					className='rounded-sm bg-primary-dark/15 p-4 text-black/80'
 					fontSize='small'
 				>
 					{icon}
@@ -43,7 +43,7 @@ export const MenuItem = ({
 					{loading ? (
 						<Loader className='h-1/2 text-primary/90' />
 					) : (
-						(children ?? <NavigateNext className='text-as-text-primary/80' />)
+						(children ?? <NavigateNext className='text-black/80' />)
 					)}
 				</div>
 			</Container>

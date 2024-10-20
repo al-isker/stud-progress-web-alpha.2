@@ -19,9 +19,10 @@ export const SupportDeviceScript = () => {
 		defaultMatches: true
 	});
 
-	const isSupportWidth = useMediaQuery(`(max-width:${BREAKPOINTS.max}px)`, {
-		defaultMatches: true
-	});
+	const isSupportWidth = useMediaQuery(
+		`(max-width:${BREAKPOINTS.maxSupport}px)`,
+		{ defaultMatches: true }
+	);
 
 	useEffect(() => {
 		if (!isTouchDevice) {

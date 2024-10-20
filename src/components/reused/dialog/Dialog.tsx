@@ -34,7 +34,7 @@ export const Dialog = ({
 }: Props) => (
 	<DialogMUI
 		slotProps={{
-			backdrop: { className: 'bg-as-text-primary/20' }
+			backdrop: { className: 'bg-black/20' }
 		}}
 		PaperProps={{
 			variant: 'outlined',
@@ -45,7 +45,7 @@ export const Dialog = ({
 	>
 		{(icon || title) && (
 			<DialogTitle
-				className={cn('text-as-text-primary/80', classNameHeader)}
+				className={cn('text-black/80', classNameHeader)}
 				sx={{
 					display: 'flex',
 					alignItems: 'center',

@@ -4,7 +4,8 @@ export const BREAKPOINTS = {
 	xs: 320,
 	sm: 480,
 	md: 768,
-	max: 850
+	max: 768,
+	maxSupport: 850
 };
 
 export const FONT_FAMILY = {

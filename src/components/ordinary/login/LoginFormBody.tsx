@@ -24,7 +24,7 @@ export const LoginFormBody = ({ className, errorMessage, onSubmit }: Props) => {
 	return (
 		<div
 			className={cn(
-				'w-full max-w-80 rounded bg-as-bg-default bg-overlays-4 p-4 shadow-sm',
+				'w-full max-w-80 rounded bg-white bg-overlays-4 p-4 shadow-sm',
 				className
 			)}
 		>

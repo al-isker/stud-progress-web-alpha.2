@@ -9,8 +9,8 @@ import { SettingsPrivacyPolicy } from './SettingsPrivacyPolicy';
 import { SettingsSemester } from './SettingsSemester';
 
 export const Settings = ({ className }: { className?: string }) => (
-	<div className={cn('flex flex-col rounded-t bg-as-bg-default', className)}>
-		<span className='mx-auto mb-2 mt-2 h-1 w-8 rounded-full bg-as-text-primary/20' />
+	<div className={cn('flex flex-col rounded-t bg-white', className)}>
+		<span className='mx-auto mb-2 mt-2 h-1 w-8 rounded-full bg-black/20' />
 
 		<SettingsMode />
 		<Divider className='!my-0' variant='middle' />
