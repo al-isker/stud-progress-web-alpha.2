@@ -1,7 +1,7 @@
 import { Avatar } from '@/components/ordinary/avatar/Avatar';
 import { Settings } from '@/components/ordinary/settings/Settings';
-import { UserInfo } from '@/components/ordinary/userInfo/UserInfo';
-import { UserName } from '@/components/ordinary/userName/UserName';
+import { UserInfo } from '@/components/ordinary/user-info/UserInfo';
+import { UserName } from '@/components/ordinary/user-name/UserName';
 import { Container } from '@/components/reused/container/Container';
 import { Limiter } from '@/components/reused/limiter/Limiter';
 
