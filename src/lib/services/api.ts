@@ -1,39 +1,26 @@
-import axios from 'axios';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { config } from '@/lib/constants/config';
+import { SERVER_URL } from '@/lib/constants/config';
 
-import { AuthService } from './authService';
-
-export const baseApi = axios.create(config);
-
-export const api = axios.create(config);
-
-api.interceptors.request.use(reqConfig => {
-	reqConfig.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
-	return reqConfig;
+export const baseApi = createApi({
+	baseQuery: fetchBaseQuery({
+		baseUrl: SERVER_URL,
+		credentials: 'include',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}),
+	endpoints: () => ({})
 });
 
-api.interceptors.response.use(
-	response => response,
-	async error => {
-		const originalRequest = error.config;
-
-		if (
-			error.response.status === 401 &&
-			error.config &&
-			!error.config._isRetry
-		) {
-			originalRequest._isRetry = true;
-
-			try {
-				const refreshRes = await AuthService.refreshToken();
-
-				localStorage.setItem('accessToken', refreshRes.data.accessToken);
-
-				return api.request(originalRequest);
-			} catch {}
+export const api = createApi({
+	baseQuery: fetchBaseQuery({
+		baseUrl: SERVER_URL,
+		credentials: 'include',
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+			'Content-Type': 'application/json'
 		}
-
-		throw error;
-	}
-);
+	}),
+	endpoints: () => ({})
+});

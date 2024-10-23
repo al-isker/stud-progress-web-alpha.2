@@ -1,9 +1,9 @@
 import { CreateAxiosDefaults } from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API;
+export const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export const config: CreateAxiosDefaults = {
-	baseURL: API_URL,
+	baseURL: SERVER_URL,
 	withCredentials: true,
 	timeout: 15000,
 	headers: {

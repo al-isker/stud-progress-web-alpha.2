@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import colorSchemeReducer from './slices/colorSlice';
+import { api } from '@/lib/services/api';
 
 export const store = configureStore({
 	reducer: {
-		colorScheme: colorSchemeReducer
+		[api.reducerPath]: api.reducer
+	},
+
+	middleware: getDefaultMiddleware => {
+		return getDefaultMiddleware().concat(api.middleware);
 	}
 });
 
