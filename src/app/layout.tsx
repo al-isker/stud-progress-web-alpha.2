@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
-import { IBM_Plex_Sans } from 'next/font/google';
+import { Golos_Text } from 'next/font/google';
 import { FC, PropsWithChildren } from 'react';
 
-const font = IBM_Plex_Sans({
+const font = Golos_Text({
 	subsets: ['latin'],
-	weight: ['100', '200', '300', '400', '500', '600', '700'],
+	weight: ['400', '500', '600', '700', '800', '900'],
 	variable: '--font-primary'
 });
 
