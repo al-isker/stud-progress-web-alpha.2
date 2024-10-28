@@ -21,4 +21,4 @@ export const COLORS = {
 	}
 };
 
-export const BORDER_RADIUS = 8;
+export const BORDER_RADIUS = 10;

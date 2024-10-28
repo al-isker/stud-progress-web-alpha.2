@@ -1,6 +1,7 @@
 export interface ErrorRes {
-	status: number;
-	message: string;
+	error: string;
+	message: string[] | string;
+	statusCode: number;
 }
 
 export interface LoginRes {
@@ -18,7 +19,6 @@ export interface ProfileRes {
 	year: number;
 	semester: number;
 	averageMark: number;
-	subjectUpdatedAt: Date;
 }
 
 export interface UpdateSemesterRes

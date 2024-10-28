@@ -26,7 +26,7 @@ export const AvatarUpload = memo(function AvatarUpload({
 			<Upload ref={uploadRef} accept='.png,.jpg' onUpload={onUpload} />
 
 			<AvatarActions
-				className='absolute right-0 top-5'
+				className='absolute -right-1.5 top-0'
 				onClickUpload={() => uploadRef.current?.click()}
 				onClickDelete={onDelete}
 				onClickInfo={onInfo}

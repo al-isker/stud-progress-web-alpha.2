@@ -15,7 +15,7 @@ interface Props
 		e: SyntheticEvent | Event,
 		reason: SnackbarCloseReason | 'clickButton'
 	) => void;
-	noCloseButton?: boolean;
+	closeButton?: boolean;
 }
 
 export const Message = ({
@@ -25,7 +25,7 @@ export const Message = ({
 	autoHideDuration,
 	onClose,
 	title,
-	noCloseButton,
+	closeButton,
 	...AlertProps
 }: Props) => (
 	<Snackbar
@@ -40,8 +40,8 @@ export const Message = ({
 		}
 	>
 		<Alert
-			className='shadow-always-blackest/15 shadow-md'
-			onClose={!noCloseButton ? e => onClose(e, 'clickButton') : undefined}
+			className='shadow-md shadow-always-blackest/15'
+			onClose={closeButton ? e => onClose(e, 'clickButton') : undefined}
 			{...AlertProps}
 		>
 			{children}

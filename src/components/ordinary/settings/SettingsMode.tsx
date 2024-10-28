@@ -16,9 +16,12 @@ export const SettingsMode = () => {
 	};
 
 	return (
-		<MenuItem icon={<InvertColors />} text='Тема' onClick={handleClick}>
-			<SwitchMode mode={mode as PaletteMode} />
-		</MenuItem>
+		<MenuItem
+			icon={<InvertColors />}
+			text='Тема'
+			rightSlot={<SwitchMode mode={mode as PaletteMode} />}
+			onClick={handleClick}
+		/>
 	);
 };
 

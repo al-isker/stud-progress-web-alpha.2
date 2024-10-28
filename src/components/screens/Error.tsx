@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 
+import { Main } from '@/components/ordinary/main/Main';
 import { Container } from '@/components/reused/container/Container';
 
 export const Error = () => {
@@ -10,8 +11,10 @@ export const Error = () => {
 	const message = searchParams.get('message');
 
 	return (
-		<Container className='grid h-full place-content-center'>
-			<p className='text-center'>{message}</p>
-		</Container>
+		<Main>
+			<Container className='grid h-full place-content-center'>
+				<p className='text-center'>{message}</p>
+			</Container>
+		</Main>
 	);
 };

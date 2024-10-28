@@ -8,7 +8,7 @@ import { Button } from '@/components/reused/button/Button';
 import { Dialog } from '@/components/reused/dialog/Dialog';
 import { Message } from '@/components/reused/message/Message';
 
-import { avatarMaxSize, avatarPath } from '@/lib/constants/localStorage';
+import { AVATAR_KEY, AVATAR_MAX_SIZE } from '@/lib/constants/localStorage';
 import { useLocaleImage } from '@/lib/hooks/useLocalImage';
 import { useShowHide } from '@/lib/hooks/useShowHide';
 
@@ -20,7 +20,7 @@ export const Avatar = () => {
 		setImage: setAvatar,
 		removeImage: removeAvatar,
 		error
-	} = useLocaleImage(avatarPath, avatarMaxSize);
+	} = useLocaleImage(AVATAR_KEY, AVATAR_MAX_SIZE);
 
 	const info = useShowHide();
 
@@ -35,7 +35,6 @@ export const Avatar = () => {
 				open={error.isShow}
 				onClose={error.hide}
 				autoHideDuration={3000}
-				noCloseButton
 			>
 				{error.message}
 			</Message>

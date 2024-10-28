@@ -9,16 +9,20 @@ import { Container } from '@/components/reused/container/Container';
 import { Loader } from '../loader/Loader';
 
 interface Props
-	extends Omit<MenuItemProps, 'sx' | 'disableGutters' | 'disabled'> {
+	extends Omit<
+		MenuItemProps,
+		'children' | 'sx' | 'disableGutters' | 'disabled'
+	> {
 	icon: ReactNode;
 	text: string;
+	rightSlot?: ReactNode;
 	loading?: boolean;
 }
 
 export const MenuItem = ({
-	children,
 	icon,
 	text,
+	rightSlot,
 	loading,
 	...MenuItemProps
 }: Props) => {
@@ -36,14 +40,14 @@ export const MenuItem = ({
 				>
 					{icon}
 				</MenuItemIcon>
-				<div className='flex-grow overflow-hidden text-ellipsis text-nowrap'>
+				<div className='flex-grow overflow-hidden text-ellipsis text-nowrap text-black/80'>
 					{text}
 				</div>
 				<div className='h-full max-h-fit'>
 					{loading ? (
 						<Loader className='h-1/2 text-primary/90' />
 					) : (
-						(children ?? <NavigateNext className='text-black/80' />)
+						(rightSlot ?? <NavigateNext className='text-black/80' />)
 					)}
 				</div>
 			</Container>

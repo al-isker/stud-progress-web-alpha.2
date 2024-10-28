@@ -1,16 +1,15 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
-import { AxiosError } from 'axios';
 import { motion } from 'framer-motion';
 import { SubmitHandler } from 'react-hook-form';
 
+import { ACCESS_TOKEN_KEY } from '@/lib/constants/localStorage';
 import { ROUTES } from '@/lib/constants/routes';
-import { AuthService } from '@/lib/services/authService';
-import { ErrorRes } from '@/lib/types/responses';
+import { useLoginMutation } from '@/lib/services/auth';
 import { LoginSchema } from '@/lib/types/schemes';
+import { parseQueryError } from '@/lib/utils/parse-query-error';
 
 import { LoginFormBody } from './LoginFormBody';
 import { LoginFormHeader } from './LoginFormHeader';
@@ -29,29 +28,25 @@ const animation = {
 };
 
 export const LoginForm = () => {
-	const [isLoading, setIsLoading] = useState(false);
-	const [errorMessage, setErrorMessage] = useState<string>();
-
 	const router = useRouter();
 
-	const submit: SubmitHandler<LoginSchema> = async data => {
-		setIsLoading(true);
+	const [login, { error, isLoading, isUninitialized }] = useLoginMutation();
 
-		AuthService.login(data)
-			.then(res => {
-				localStorage.setItem('accessToken', res.data.accessToken);
+	const parsedError = parseQueryError(error);
+
+	const submit: SubmitHandler<LoginSchema> = body => {
+		login(body)
+			.unwrap()
+			.then(({ accessToken }) => {
+				localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
 
 				router.replace(ROUTES.home);
-			})
-			.catch((err: AxiosError<ErrorRes>) => {
-				setErrorMessage(err.response?.data.message);
-				setIsLoading(false);
 			});
 	};
 
 	return (
 		<div className='flex h-full flex-col justify-center gap-y-4'>
-			<LoginFormHeader loading={isLoading} />
+			<LoginFormHeader loading={!isUninitialized} />
 
 			<motion.div
 				className='overflow-hidden'
@@ -66,7 +61,7 @@ export const LoginForm = () => {
 				<LoginFormBody
 					className='mx-auto'
 					onSubmit={submit}
-					errorMessage={errorMessage}
+					errorMessage={parsedError?.message}
 				/>
 			</motion.div>
 		</div>

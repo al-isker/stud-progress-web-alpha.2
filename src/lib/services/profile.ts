@@ -2,25 +2,33 @@ import { ProfileRes, UpdateSemesterRes } from '../types/responses';
 import { UpdateSemesterSchema } from '../types/schemes';
 import { api } from './api';
 
-const profile = 'profile';
-
 const profileApi = api.injectEndpoints({
 	overrideExisting: true,
 	endpoints: build => ({
-		getStudent: build.query<ProfileRes, void>({
-			query: () => ({
-				url: 'http://localhost:4200/profile'
-			})
+		getProfile: build.query<ProfileRes, void>({
+			query: () => 'profile',
+			providesTags: ['profile']
 		}),
 
 		updateSemester: build.mutation<UpdateSemesterRes, UpdateSemesterSchema>({
 			query: body => ({
-				url: profile,
+				url: 'profile/update-semester',
 				method: 'PATCH',
-				body
-			})
+				body: body
+			}),
+			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+				try {
+					const { data } = await queryFulfilled;
+					dispatch(
+						profileApi.util.updateQueryData('getProfile', undefined, draft => {
+							Object.assign(draft, data);
+						})
+					);
+				} catch {}
+			},
+			invalidatesTags: ['rating', 'grade']
 		})
 	})
 });
 
-export const { useGetStudentQuery, useUpdateSemesterMutation } = profileApi;
+export const { useGetProfileQuery, useUpdateSemesterMutation } = profileApi;

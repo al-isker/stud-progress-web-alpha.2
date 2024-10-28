@@ -1,18 +1,30 @@
 import { ReactNode } from 'react';
 
+import { Error as ErrorIcon } from '@mui/icons-material';
+import { SerializedError } from '@reduxjs/toolkit';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+
+import { parseQueryError } from '@/lib/utils/parse-query-error';
+
 import { Loader } from '../loader/Loader';
 
 interface Props {
-	children: ReactNode;
+	children?: ReactNode;
+	error?: FetchBaseQueryError | SerializedError;
 	isLoading?: boolean;
-	error?: any;
 }
 
-export const QueryWrapper = ({ children, isLoading, error }: Props) => {
-	if (isLoading) return <Loading />;
-	else if (error) return <Error />;
-	else return children;
-};
+export const QueryWrapper = ({ children, error, isLoading }: Props) => (
+	<>
+		{isLoading ? (
+			<Loading />
+		) : error ? (
+			<Error>{parseQueryError(error)?.message}</Error>
+		) : (
+			children
+		)}
+	</>
+);
 
 const Loading = () => (
 	<div className='grid h-full w-full place-content-center'>
@@ -20,4 +32,9 @@ const Loading = () => (
 	</div>
 );
 
-const Error = () => <div>error</div>;
+const Error = ({ children }: { children?: ReactNode }) => (
+	<div className='flex gap-2'>
+		<ErrorIcon color='error' />
+		<p className='text-black/80'>{children}</p>
+	</div>
+);
