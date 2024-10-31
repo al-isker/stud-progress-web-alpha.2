@@ -30,7 +30,7 @@ const animation = {
 export const LoginForm = () => {
 	const router = useRouter();
 
-	const [login, { error, isLoading, isUninitialized }] = useLoginMutation();
+	const [login, { error, isLoading, isSuccess }] = useLoginMutation();
 
 	const parsedError = parseQueryError(error);
 
@@ -46,13 +46,13 @@ export const LoginForm = () => {
 
 	return (
 		<div className='flex h-full flex-col justify-center gap-y-4'>
-			<LoginFormHeader loading={!isUninitialized} />
+			<LoginFormHeader loading={isLoading || isSuccess} />
 
 			<motion.div
 				className='overflow-hidden'
 				variants={animation}
 				initial='hide'
-				animate={isLoading ? 'hide' : 'show'}
+				animate={isLoading || isSuccess ? 'hide' : 'show'}
 				transition={{
 					type: 'spring',
 					mass: 0.1

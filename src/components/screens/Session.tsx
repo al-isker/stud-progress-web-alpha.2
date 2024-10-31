@@ -4,7 +4,7 @@ import { Limiter } from '@/components/reused/limiter/Limiter';
 export const Session = () => {
 	return (
 		<Limiter>
-			<Container>Session</Container>
+			<Container className='pt-container'>Session</Container>
 		</Limiter>
 	);
 };

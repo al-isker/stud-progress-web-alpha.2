@@ -4,7 +4,7 @@ import { Limiter } from '@/components/reused/limiter/Limiter';
 export const Dashboard = () => {
 	return (
 		<Limiter>
-			<Container>Dashboard</Container>
+			<Container className='pt-container'>Dashboard</Container>
 		</Limiter>
 	);
 };

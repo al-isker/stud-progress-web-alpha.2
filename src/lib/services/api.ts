@@ -1,34 +1,56 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { SERVER_URL } from '@/lib/constants/config';
+import { ACCESS_TOKEN_KEY } from '@/lib/constants/localStorage';
+import { ROUTES } from '@/lib/constants/routes';
+import { RefreshTokenRes } from '@/lib/types/responses';
 
-export const baseApi = createApi({
-	reducerPath: 'baseApi',
-	baseQuery: fetchBaseQuery({
-		baseUrl: SERVER_URL,
-		timeout: 30000,
-		credentials: 'include',
-		headers: {
-			'Content-Type': 'application/json'
+const instanceQuery = fetchBaseQuery({
+	baseUrl: SERVER_URL,
+	timeout: 30000,
+	credentials: 'include',
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	prepareHeaders: headers => {
+		const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+
+		if (accessToken) {
+			headers.set('Authorization', `Bearer ${accessToken}`);
 		}
-	}),
-	tagTypes: ['rating', 'grade', 'profile'],
-	endpoints: () => ({})
+
+		return headers;
+	}
 });
 
 export const api = createApi({
 	reducerPath: 'api',
-	baseQuery: fetchBaseQuery({
-		baseUrl: SERVER_URL,
-		timeout: 30000,
-		credentials: 'include',
-		headers: {
-			// Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN_KEY)}`,
-			Authorization:
-				'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI5OTU0MzAxLCJleHAiOjE3Mjk5NTc5MDF9.-FoF04yMTE_Zz2hA90YJtlGEzXpiZRLH1ntkPLjgYp8',
-			'Content-Type': 'application/json'
-		}
-	}),
 	tagTypes: ['rating', 'grade', 'profile'],
+	baseQuery: async (args, api, extraOptions) => {
+		let response = await instanceQuery(args, api, extraOptions);
+
+		if (window.location.pathname !== ROUTES.login) {
+			if (response.error && response.error.status === 401) {
+				const refreshResponse = await instanceQuery(
+					{ url: 'auth/refresh-token', method: 'POST' },
+					api,
+					{}
+				);
+
+				if (refreshResponse.data) {
+					localStorage.setItem(
+						ACCESS_TOKEN_KEY,
+						(refreshResponse.data as RefreshTokenRes).accessToken
+					);
+
+					response = await instanceQuery(args, api, extraOptions);
+				} else {
+					window.location.href = ROUTES.login;
+				}
+			}
+		}
+
+		return response;
+	},
 	endpoints: () => ({})
 });

@@ -1,8 +1,8 @@
-import { LoginRes, LogoutRes, RefreshTokenRes } from '../types/responses';
+import { LoginRes, LogoutRes } from '../types/responses';
 import { LoginSchema } from '../types/schemes';
-import { baseApi } from './api';
+import { api } from './api';
 
-export const authApi = baseApi.injectEndpoints({
+export const authApi = api.injectEndpoints({
 	overrideExisting: true,
 	endpoints: build => ({
 		login: build.mutation<LoginRes, LoginSchema>({
@@ -14,13 +14,6 @@ export const authApi = baseApi.injectEndpoints({
 			invalidatesTags: ['rating', 'grade', 'profile']
 		}),
 
-		refreshToken: build.mutation<RefreshTokenRes, void>({
-			query: () => ({
-				url: 'auth/refresh-token',
-				method: 'POST'
-			})
-		}),
-
 		logout: build.mutation<LogoutRes, void>({
 			query: () => ({
 				url: 'auth/logout',
@@ -30,5 +23,4 @@ export const authApi = baseApi.injectEndpoints({
 	})
 });
 
-export const { useLoginMutation, useRefreshTokenMutation, useLogoutMutation } =
-	authApi;
+export const { useLoginMutation, useLogoutMutation } = authApi;
