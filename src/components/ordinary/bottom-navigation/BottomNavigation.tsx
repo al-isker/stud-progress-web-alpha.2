@@ -1,29 +1,74 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
-import { SyntheticEvent } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
+import {
+	DonutLarge,
+	HomeRounded,
+	PersonRounded,
+	SchoolRounded
+} from '@mui/icons-material';
 import {
 	BottomNavigationAction,
 	BottomNavigation as BottomNavigationMUI,
 	Paper
 } from '@mui/material';
 
-import { useTabs } from '@/components/other/useTabs';
 import { Limiter } from '@/components/reused/limiter/Limiter';
+
+import { TAB_ROUTES } from '@/lib/constants/routes';
+
+import { BadgeDashboard } from './BadgeDashboard';
+import { BadgeHome } from './BadgeHome';
+import { BadgeProfile } from './BadgeProfile';
+import { BadgeSession } from './BadgeSession';
+
+const TABS = [
+	{
+		label: 'Главная',
+		href: TAB_ROUTES.rating,
+		icon: (
+			<BadgeHome>
+				<HomeRounded />
+			</BadgeHome>
+		)
+	},
+	{
+		label: 'Сессия',
+		href: TAB_ROUTES.session,
+		icon: (
+			<BadgeSession>
+				<SchoolRounded />
+			</BadgeSession>
+		)
+	},
+	{
+		label: 'Статистика',
+		href: TAB_ROUTES.dashboard,
+		icon: (
+			<BadgeDashboard>
+				<DonutLarge />
+			</BadgeDashboard>
+		)
+	},
+	{
+		label: 'Профиль',
+		href: TAB_ROUTES.profile,
+		icon: (
+			<BadgeProfile>
+				<PersonRounded />
+			</BadgeProfile>
+		)
+	}
+];
 
 export const BottomNavigation = () => {
 	const pathname = usePathname();
-	const router = useRouter();
 
-	const handleChange = (_: SyntheticEvent, route: string) => {
-		router.push(route);
+	const findActiveTab = () => {
+		return Object.values(TAB_ROUTES).find(route => pathname.includes(route));
 	};
-
-	const tabs = useTabs({
-		// isHomeNew: true,
-		// isSessionNew: false
-	});
 
 	return (
 		<>
@@ -33,14 +78,15 @@ export const BottomNavigation = () => {
 					<BottomNavigationMUI
 						className='h-14'
 						component='nav'
-						value={pathname}
-						onChange={handleChange}
+						value={findActiveTab()}
 					>
-						{tabs.map((tab, i) => (
+						{TABS.map((tab, i) => (
 							<BottomNavigationAction
 								key={i}
+								LinkComponent={Link}
+								label={tab.label}
+								href={tab.href}
 								value={tab.href}
-								label={tab.text}
 								icon={tab.icon}
 							/>
 						))}

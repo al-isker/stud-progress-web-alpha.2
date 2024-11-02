@@ -8,7 +8,7 @@ import { Button } from '@/components/reused/button/Button';
 import { Dialog } from '@/components/reused/dialog/Dialog';
 import { MenuItem } from '@/components/reused/menu-item/MenuItem';
 
-import { DOWNLOAD_LINKS } from '@/lib/constants/routes';
+import { DOWNLOAD_LINKS } from '@/lib/constants/links';
 import { useShowHide } from '@/lib/hooks/useShowHide';
 
 export const SettingsDownloadApp = () => {

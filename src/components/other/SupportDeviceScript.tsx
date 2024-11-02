@@ -30,7 +30,7 @@ export const SupportDeviceScript = () => {
 		} else if (!isSupportWidth) {
 			appError('Текущее разрешение не поддерживается');
 		} else if (pathname === ROUTES.error) {
-			router.replace(ROUTES.home);
+			router.replace(ROUTES.rating);
 		}
 	}, [isTouchDevice, isSupportWidth]);
 

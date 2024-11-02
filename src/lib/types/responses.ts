@@ -23,3 +23,14 @@ export interface ProfileRes {
 
 export interface UpdateSemesterRes
 	extends Pick<ProfileRes, 'year' | 'semester' | 'averageMark'> {}
+
+export interface RatingItemRes {
+	id: number;
+	name: string;
+	rating: {
+		id: number;
+		mark: string;
+		date: Date;
+		isNew: boolean;
+	}[];
+}

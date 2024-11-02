@@ -1,5 +1,6 @@
-import { ProfileRes, UpdateSemesterRes } from '../types/responses';
-import { UpdateSemesterSchema } from '../types/schemes';
+import { ProfileRes, UpdateSemesterRes } from '@/lib/types/responses';
+import { UpdateSemesterSchema } from '@/lib/types/schemes';
+
 import { api } from './api';
 
 const profileApi = api.injectEndpoints({

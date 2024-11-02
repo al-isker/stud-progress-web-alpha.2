@@ -1,5 +1,6 @@
-import { LoginRes, LogoutRes } from '../types/responses';
-import { LoginSchema } from '../types/schemes';
+import { LoginRes, LogoutRes } from '@/lib/types/responses';
+import { LoginSchema } from '@/lib/types/schemes';
+
 import { api } from './api';
 
 export const authApi = api.injectEndpoints({

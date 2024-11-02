@@ -40,7 +40,7 @@ export const LoginForm = () => {
 			.then(({ accessToken }) => {
 				localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
 
-				router.replace(ROUTES.home);
+				router.replace(ROUTES.rating);
 			});
 	};
 
