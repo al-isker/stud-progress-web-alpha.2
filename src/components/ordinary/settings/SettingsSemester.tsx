@@ -3,7 +3,7 @@
 import { AppRegistration, ArrowDropDown } from '@mui/icons-material';
 
 import { DialogSelect } from '@/components/fields/simple/DialogSelect';
-import { MenuItem } from '@/components/reused/menu-item/MenuItem';
+import { MenuButton } from '@/components/reused/menu-button/MenuButton';
 import { QueryErrorMessage } from '@/components/reused/query-error-message/QueryErrorMessage';
 
 import { semesterOptions } from '@/lib/constants/options';
@@ -33,7 +33,7 @@ export const SettingsSemester = ({ semester }: { semester: number }) => {
 				dense
 			/>
 
-			<MenuItem
+			<MenuButton
 				icon={<AppRegistration />}
 				text='Изменить семестер'
 				rightSlot={<ArrowDropDown className='text-black/80' />}

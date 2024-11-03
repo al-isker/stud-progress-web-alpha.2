@@ -6,7 +6,7 @@ import { Android, Apple, GetApp } from '@mui/icons-material';
 
 import { Button } from '@/components/reused/button/Button';
 import { Dialog } from '@/components/reused/dialog/Dialog';
-import { MenuItem } from '@/components/reused/menu-item/MenuItem';
+import { MenuButton } from '@/components/reused/menu-button/MenuButton';
 
 import { DOWNLOAD_LINKS } from '@/lib/constants/links';
 import { useShowHide } from '@/lib/hooks/useShowHide';
@@ -16,7 +16,7 @@ export const SettingsDownloadApp = () => {
 
 	return (
 		<>
-			<MenuItem
+			<MenuButton
 				icon={<GetApp />}
 				text='Скачать приложение'
 				onClick={prompt.show}

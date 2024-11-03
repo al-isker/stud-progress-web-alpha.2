@@ -19,7 +19,7 @@ interface Props
 	loading?: boolean;
 }
 
-export const MenuItem = ({
+export const MenuButton = ({
 	icon,
 	text,
 	rightSlot,
@@ -28,6 +28,7 @@ export const MenuItem = ({
 }: Props) => {
 	return (
 		<MenuItemMUI
+			component='button'
 			sx={{ height: '3.5rem', paddingBlock: 0 }}
 			disableGutters
 			disabled={loading}
@@ -40,7 +41,7 @@ export const MenuItem = ({
 				>
 					{icon}
 				</MenuItemIcon>
-				<div className='flex-grow overflow-hidden text-ellipsis text-nowrap text-black/80'>
+				<div className='flex-grow overflow-hidden text-ellipsis text-nowrap text-left text-black/80'>
 					{text}
 				</div>
 				<div className='h-full max-h-fit'>

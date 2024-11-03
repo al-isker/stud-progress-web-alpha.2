@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { LogoutOutlined } from '@mui/icons-material';
 
-import { MenuItem } from '@/components/reused/menu-item/MenuItem';
+import { MenuButton } from '@/components/reused/menu-button/MenuButton';
 import { QueryErrorMessage } from '@/components/reused/query-error-message/QueryErrorMessage';
 
 import { ACCESS_TOKEN_KEY } from '@/lib/constants/localStorage';
@@ -30,7 +30,7 @@ export const SettingsLogout = () => {
 		<>
 			<QueryErrorMessage error={error} />
 
-			<MenuItem
+			<MenuButton
 				icon={<LogoutOutlined className='rotate-180' />}
 				text='Выйти'
 				onClick={handleClick}

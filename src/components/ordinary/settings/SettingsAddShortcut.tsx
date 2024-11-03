@@ -2,8 +2,8 @@
 
 import { TouchApp } from '@mui/icons-material';
 
-import { MenuItem } from '@/components/reused/menu-item/MenuItem';
+import { MenuButton } from '@/components/reused/menu-button/MenuButton';
 
 export const SettingsAddShortcut = () => {
-	return <MenuItem icon={<TouchApp />} text='Добавить значок на экран' />;
+	return <MenuButton icon={<TouchApp />} text='Добавить значок на экран' />;
 };

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { InvertColors } from '@mui/icons-material';
 import { PaletteMode, useColorScheme } from '@mui/material/';
 
-import { MenuItem } from '@/components/reused/menu-item/MenuItem';
+import { MenuButton } from '@/components/reused/menu-button/MenuButton';
 import { Switch } from '@/components/reused/switch/Switch';
 
 export const SettingsMode = () => {
@@ -16,7 +16,7 @@ export const SettingsMode = () => {
 	};
 
 	return (
-		<MenuItem
+		<MenuButton
 			icon={<InvertColors />}
 			text='Тема'
 			rightSlot={<SwitchMode mode={mode as PaletteMode} />}
