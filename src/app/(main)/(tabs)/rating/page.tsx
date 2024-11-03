@@ -1,11 +1,11 @@
 import { Metadata, NextPage } from 'next';
 
-import { Home } from '@/components/screens/Home';
+import { Rating } from '@/components/screens/Rating';
 
 export const metadata: Metadata = {
 	title: 'Главная'
 };
 
-const HomePage: NextPage = () => <Home />;
+const HomePage: NextPage = () => <Rating />;
 
 export default HomePage;

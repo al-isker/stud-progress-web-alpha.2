@@ -1,10 +1,10 @@
 import { Container } from '@/components/reused/container/Container';
 import { Limiter } from '@/components/reused/limiter/Limiter';
 
-export const Home = () => {
+export const RatingById = () => {
 	return (
 		<Limiter>
-			<Container className='pt-container'>Home</Container>
+			<Container className='pt-container'>Rating by id</Container>
 		</Limiter>
 	);
 };
