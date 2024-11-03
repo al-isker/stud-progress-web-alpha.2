@@ -71,28 +71,25 @@ export const BottomNavigation = () => {
 	};
 
 	return (
-		<>
-			<div className='min-h-14' />
-			<Paper className='fixed bottom-0 w-full bg-none' elevation={4}>
-				<Limiter>
-					<BottomNavigationMUI
-						className='h-14'
-						component='nav'
-						value={findActiveTab()}
-					>
-						{TABS.map((tab, i) => (
-							<BottomNavigationAction
-								key={i}
-								LinkComponent={Link}
-								label={tab.label}
-								href={tab.href}
-								value={tab.href}
-								icon={tab.icon}
-							/>
-						))}
-					</BottomNavigationMUI>
-				</Limiter>
-			</Paper>
-		</>
+		<Paper className='z-10 w-full rounded-none' elevation={4}>
+			<Limiter>
+				<BottomNavigationMUI
+					component='nav'
+					className='bg-transparent h-14'
+					value={findActiveTab()}
+				>
+					{TABS.map((tab, i) => (
+						<BottomNavigationAction
+							key={i}
+							component={Link}
+							label={tab.label}
+							href={tab.href}
+							value={tab.href}
+							icon={tab.icon}
+						/>
+					))}
+				</BottomNavigationMUI>
+			</Limiter>
+		</Paper>
 	);
 };

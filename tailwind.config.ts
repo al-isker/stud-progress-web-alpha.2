@@ -44,7 +44,9 @@ const config: Config = {
 
 			'always-white': 'rgb(255 255 255 / <alpha-value>)',
 			'always-black': 'rgb(18 18 18 / <alpha-value>)',
-			'always-blackest': 'rgb(0 0 0 / <alpha-value>)'
+			'always-blackest': 'rgb(0 0 0 / <alpha-value>)',
+
+			transparent: 'transparent'
 		},
 
 		extend: {
