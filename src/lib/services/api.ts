@@ -1,17 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { SERVER_URL } from '@/lib/constants/config';
 import { ACCESS_TOKEN_KEY } from '@/lib/constants/localStorage';
 import { ROUTES } from '@/lib/constants/routes';
 import { RefreshTokenRes } from '@/lib/types/responses';
 
+import { FETCH_CONFIG } from '../constants/config';
+
 const instanceQuery = fetchBaseQuery({
-	baseUrl: SERVER_URL,
-	timeout: 30000,
-	credentials: 'include',
-	headers: {
-		'Content-Type': 'application/json'
-	},
+	...FETCH_CONFIG,
+
 	prepareHeaders: headers => {
 		const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
 

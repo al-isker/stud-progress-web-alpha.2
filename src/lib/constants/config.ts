@@ -1,11 +1,11 @@
-import { CreateAxiosDefaults } from 'axios';
+import { FetchBaseQueryArgs } from '@reduxjs/toolkit/query/react';
 
-export const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+import { SERVER_URL } from './environments';
 
-export const config: CreateAxiosDefaults = {
-	baseURL: SERVER_URL,
-	withCredentials: true,
-	timeout: 15000,
+export const FETCH_CONFIG: FetchBaseQueryArgs = {
+	baseUrl: SERVER_URL,
+	timeout: 20000,
+	credentials: 'include',
 	headers: {
 		'Content-Type': 'application/json'
 	}
