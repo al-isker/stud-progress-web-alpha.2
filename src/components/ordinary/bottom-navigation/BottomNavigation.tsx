@@ -20,8 +20,8 @@ import { Limiter } from '@/components/reused/limiter/Limiter';
 import { TAB_ROUTES } from '@/lib/constants/routes';
 
 import { BadgeDashboard } from './BadgeDashboard';
-import { BadgeHome } from './BadgeHome';
 import { BadgeProfile } from './BadgeProfile';
+import { BadgeRating } from './BadgeRating';
 import { BadgeSession } from './BadgeSession';
 
 const TABS = [
@@ -29,9 +29,9 @@ const TABS = [
 		label: 'Главная',
 		href: TAB_ROUTES.rating,
 		icon: (
-			<BadgeHome>
+			<BadgeRating>
 				<HomeRounded />
-			</BadgeHome>
+			</BadgeRating>
 		)
 	},
 	{
@@ -75,7 +75,7 @@ export const BottomNavigation = () => {
 			<Limiter>
 				<BottomNavigationMUI
 					component='nav'
-					className='bg-transparent h-14'
+					className='h-14 bg-transparent'
 					value={findActiveTab()}
 				>
 					{TABS.map((tab, i) => (

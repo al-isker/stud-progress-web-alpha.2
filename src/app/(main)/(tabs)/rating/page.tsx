@@ -6,6 +6,6 @@ export const metadata: Metadata = {
 	title: 'Главная'
 };
 
-const HomePage: NextPage = () => <Rating />;
+const RatingPage: NextPage = () => <Rating />;
 
-export default HomePage;
+export default RatingPage;

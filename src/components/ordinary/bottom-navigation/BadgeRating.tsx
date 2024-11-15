@@ -4,7 +4,7 @@ import { Badge } from '@mui/material';
 
 import { useGetRatingsQuery } from '@/lib/services/rating';
 
-export const BadgeHome = ({ children }: { children: ReactNode }) => {
+export const BadgeRating = ({ children }: { children: ReactNode }) => {
 	const { data } = useGetRatingsQuery();
 
 	const isNewRating = data?.some(item => {
