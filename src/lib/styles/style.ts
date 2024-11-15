@@ -1,4 +1,4 @@
-import { pink } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
 
 export const BREAKPOINTS = {
 	xs: 320,
@@ -14,10 +14,10 @@ export const FONT_FAMILY = {
 
 export const COLORS = {
 	light: {
-		primary: pink[500]
+		primary: indigo['A700']
 	},
 	dark: {
-		primary: pink[500]
+		primary: indigo['A200']
 	}
 };
 

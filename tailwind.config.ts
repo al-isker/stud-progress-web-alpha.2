@@ -22,7 +22,7 @@ const config: Config = {
 		fontFamily: FONT_FAMILY,
 
 		borderRadius: {
-			none: '0px',
+			none: '0',
 			sm: `${BORDER_RADIUS / 2}px`,
 			DEFAULT: `${BORDER_RADIUS}px`,
 			lg: `${BORDER_RADIUS * 2}px`,
