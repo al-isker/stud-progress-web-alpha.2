@@ -27,6 +27,7 @@ export interface UpdateSemesterRes
 export interface RatingItemRes {
 	id: number;
 	name: string;
+	controlType: string;
 	rating: {
 		id: number;
 		mark: string;
