@@ -1,9 +1,9 @@
-import { Button as ButtonMUI, ButtonProps, styled } from '@mui/material';
+'use client';
 
-const StyledButton = styled(ButtonMUI)({
-	boxShadow: 'none !important'
+import { Button as ButtonMUI, styled } from '@mui/material';
+
+export const Button = styled(ButtonMUI)({
+	'&.MuiButton-contained': {
+		boxShadow: 'none'
+	}
 });
-
-export const Button = (props: ButtonProps) => {
-	return <StyledButton {...props} />;
-};

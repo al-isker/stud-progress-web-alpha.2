@@ -1,3 +1,5 @@
+'use client';
+
 import { Switch as SwitchMUI, styled } from '@mui/material';
 
 const height = 22;
@@ -7,6 +9,7 @@ export const Switch = styled(SwitchMUI)(({ theme }) => ({
 	height: height,
 	padding: 0,
 	display: 'flex',
+
 	'&:active': {
 		'& .MuiSwitch-thumb': {
 			width: height * 0.8 + height * 0.15

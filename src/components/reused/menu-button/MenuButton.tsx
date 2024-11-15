@@ -25,36 +25,34 @@ export const MenuButton = ({
 	rightSlot,
 	loading,
 	...MenuItemProps
-}: Props) => {
-	return (
-		<MenuItemMUI
-			component='button'
-			sx={{ height: '3.5rem', paddingBlock: 0 }}
-			disableGutters
-			disabled={loading}
-			{...MenuItemProps}
-		>
-			<Container className='flex h-full items-center gap-3'>
-				<MenuItemIcon
-					className='rounded-sm bg-primary-dark/15 p-4 text-black/80'
-					fontSize='small'
-				>
-					{icon}
-				</MenuItemIcon>
-				<div className='flex-grow overflow-hidden text-ellipsis text-nowrap text-left text-black/80'>
-					{text}
-				</div>
-				<div className='h-full max-h-fit'>
-					{loading ? (
-						<Loader className='h-1/2 text-primary/90' />
-					) : (
-						(rightSlot ?? <NavigateNext className='text-black/80' />)
-					)}
-				</div>
-			</Container>
-		</MenuItemMUI>
-	);
-};
+}: Props) => (
+	<MenuItemMUI
+		component='button'
+		sx={{ height: '3.5rem', paddingBlock: 0 }}
+		disableGutters
+		disabled={loading}
+		{...MenuItemProps}
+	>
+		<Container className='flex h-full items-center gap-3'>
+			<MenuItemIcon
+				className='rounded-sm bg-primary-dark/15 p-4 text-black/80'
+				fontSize='small'
+			>
+				{icon}
+			</MenuItemIcon>
+			<div className='flex-grow overflow-hidden text-ellipsis text-nowrap text-left text-black/80'>
+				{text}
+			</div>
+			<div className='h-full max-h-fit'>
+				{loading ? (
+					<Loader className='h-1/2 text-primary/90' />
+				) : (
+					(rightSlot ?? <NavigateNext className='text-black/80' />)
+				)}
+			</div>
+		</Container>
+	</MenuItemMUI>
+);
 
 const MenuItemIcon = styled(Icon)({
 	display: 'flex',
