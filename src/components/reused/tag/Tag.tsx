@@ -1,8 +1,8 @@
 'use client';
 
-import { Chip as ChipMUI, alpha, styled } from '@mui/material';
+import { Chip, alpha, styled } from '@mui/material';
 
-const StyledChip = styled(ChipMUI)(({ theme }) => ({
+export const Tag = styled(Chip)(({ theme }) => ({
 	height: 'auto',
 	borderRadius: theme.shape.borderRadius / 1.5,
 
@@ -57,5 +57,3 @@ const StyledChip = styled(ChipMUI)(({ theme }) => ({
 		}
 	}
 }));
-
-export { StyledChip as Chip };
