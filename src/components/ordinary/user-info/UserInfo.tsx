@@ -1,3 +1,5 @@
+import { averageMarkFormatter } from '@/lib/utils/averageMarkFormatter';
+
 import { UserInfoItem } from './UserInfoItem';
 
 interface Props {
@@ -6,12 +8,13 @@ interface Props {
 	averageMark: number;
 }
 
-export const UserInfo = ({ year, semester, averageMark }: Props) => {
-	return (
-		<div className='flex gap-x-3'>
-			<UserInfoItem number={year} caption='курс' />
-			<UserInfoItem number={semester} caption='семестр' />
-			<UserInfoItem number={averageMark} caption='ср. балл' />
-		</div>
-	);
-};
+export const UserInfo = ({ year, semester, averageMark }: Props) => (
+	<div className='flex gap-x-3'>
+		<UserInfoItem number={year} caption='курс' />
+		<UserInfoItem number={semester} caption='семестр' />
+		<UserInfoItem
+			number={averageMarkFormatter(averageMark)}
+			caption='ср. балл'
+		/>
+	</div>
+);

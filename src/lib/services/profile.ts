@@ -21,9 +21,7 @@ const profileApi = api.injectEndpoints({
 				try {
 					const { data } = await queryFulfilled;
 					dispatch(
-						profileApi.util.updateQueryData('getProfile', undefined, draft => {
-							Object.assign(draft, data);
-						})
+						profileApi.util.updateQueryData('getProfile', undefined, () => data)
 					);
 				} catch {}
 			},

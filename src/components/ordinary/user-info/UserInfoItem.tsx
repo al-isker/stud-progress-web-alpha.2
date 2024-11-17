@@ -1,8 +1,10 @@
+import { ReactNode } from 'react';
+
 import { Container } from '@/components/reused/container/Container';
 
 interface Props {
-	number: number;
-	caption: string;
+	number: ReactNode;
+	caption: ReactNode;
 }
 
 export const UserInfoItem = ({ number, caption }: Props) => {

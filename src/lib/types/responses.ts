@@ -21,8 +21,7 @@ export interface ProfileRes {
 	averageMark: number;
 }
 
-export interface UpdateSemesterRes
-	extends Pick<ProfileRes, 'year' | 'semester' | 'averageMark'> {}
+export interface UpdateSemesterRes extends ProfileRes {}
 
 export interface RatingItemRes {
 	id: number;
