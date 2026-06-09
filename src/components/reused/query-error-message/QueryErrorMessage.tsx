@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 
-import '@reduxjs/toolkit';
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
